@@ -22,7 +22,7 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Municipality</label>
+                <label>Edit District</label>
                 <select class="form-control" name="province_id" id="province">
                     <?php
                         foreach ($provinces as $prov) {
@@ -44,7 +44,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Administrative Post</label>
+                <label>Edit Mukims (sub-districts)</label>
                 <select class="form-control" name="city" id="city">
                     <?php
                         foreach ($cities as $city) {
