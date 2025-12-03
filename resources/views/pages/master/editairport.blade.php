@@ -78,7 +78,7 @@
                     <?php
                         foreach ($subcities as $subcity) {
 
-                            if ($subcity->id==$embassy->sub_city) {
+                            if ($subcity->id==$airport->sub_city) {
                                 $select="selected";
                             }else{
                                 $select="";
