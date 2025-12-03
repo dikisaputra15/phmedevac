@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Airport;
 use App\Models\Provincesregion;
 use App\Models\City;
+use App\Models\Subcity;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -85,6 +86,7 @@ class MasterairportController extends Controller
 
         $airport->province_id = $request->input('province_id');
         $airport->city_id = $request->input('city');
+        $airport->sub_city = $request->input('district_id');
         $airport->airport_name = $request->input('airport_name');
         $airport->address = $request->input('address');
         $airport->latitude = $request->input('latitude');
@@ -156,14 +158,16 @@ class MasterairportController extends Controller
         $public_facilities = !empty($airport->public_facilities) ? explode(', ', $airport->public_facilities) : [];
         $public_transportation = !empty($airport->public_transportation) ? explode(', ', $airport->public_transportation) : [];
         $provinces = Provincesregion::all();
-         $cities = City::all();
+        $cities = City::all();
+        $subcities = Subcity::all();
         return view('pages.master.editairport', [
             'airport' => $airport,
             'category' => $category,
             'public_facilities' => $public_facilities,
             'public_transportation' => $public_transportation,
             'provinces' => $provinces,
-            'cities' => $cities
+            'cities' => $cities,
+            'subcities' => $subcities
         ]);
     }
 
@@ -182,6 +186,7 @@ class MasterairportController extends Controller
         $data = [
             'province_id' => $request->input('province_id'),
             'city_id' => $request->input('city'),
+            'sub_city' => $request->input('district_id'),
             'airport_name' => $request->input('airport_name'),
             'address' => $request->input('address'),
             'latitude' => $request->input('latitude'),

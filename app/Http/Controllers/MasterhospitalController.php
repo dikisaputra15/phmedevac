@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hospital;
 use App\Models\Provincesregion;
 use App\Models\City;
+use App\Models\Subcity;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -83,6 +84,7 @@ class MasterhospitalController extends Controller
 
         $hospital->province_id = $request->input('province_id');
         $hospital->city_id = $request->input('city');
+        $hospital->sub_city = $request->input('district_id');
         $hospital->name = $request->input('name');
         $hospital->latitude = $request->input('latitude');
         $hospital->longitude = $request->input('longitude');
@@ -154,10 +156,12 @@ class MasterhospitalController extends Controller
         $hospital = Hospital::findOrFail($id);
         $provinces = Provincesregion::all();
         $cities = City::all();
+        $subcities = Subcity::all();
         return view('pages.master.edithospital', [
             'hospital' => $hospital,
             'provinces' => $provinces,
-            'cities' => $cities
+            'cities' => $cities,
+            'subcities' => $subcities
         ]);
     }
 
@@ -173,6 +177,7 @@ class MasterhospitalController extends Controller
         $data = [
             'province_id' => $request->input('province_id'),
             'city_id' => $request->input('city'),
+            'sub_city' => $request->input('district_id'),
             'name' => $request->input('name'),
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),

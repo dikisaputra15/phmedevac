@@ -21,9 +21,9 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>District</label>
+                <label>Region</label>
                 <select class="form-control" name="province_id" id="province">
-                        <option value="0">-Choose District-</option>
+                        <option value="0">-Choose Region-</option>
                     @foreach($provinces as $prov)
                         <option value="{{$prov->id}}">{{$prov->provinces_region}}</option>
                     @endforeach
@@ -33,9 +33,18 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label for="city">Mukims (sub-districts)</label>
+                <label for="city">Province</label>
                 <select name="city" id="city" class="form-control">
-                    <option value="">-Choose Mukims (sub-districts)-</option>
+                    <option value="">-Choose Province-</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>City</label>
+                <select name="district_id" id="district" class="form-control">
+                    <option value="">-Choose City-</option>
                 </select>
             </div>
         </div>
@@ -167,7 +176,7 @@
                 type: 'GET',
                 success: function (data) {
                     $('#city').empty();
-                    $('#city').append('<option value="">-- Choosse City/Regency --</option>');
+                    $('#city').append('<option value="">-- Choosse Province --</option>');
                     $.each(data, function (key, city) {
                         $('#city').append('<option value="' + city.id + '">' + city.city + '</option>');
                     });
@@ -175,7 +184,27 @@
             });
         } else {
             $('#city').empty();
-            $('#city').append('<option value="">-- Choosse City/Regency  --</option>');
+            $('#city').append('<option value="">-- Choosse Province  --</option>');
+        }
+    });
+
+     $('#city').on('change', function () {
+        let cityID = $(this).val();
+        $('#district').html('<option value="">Loading...</option>');
+
+        if (cityID) {
+            $.ajax({
+                url: '/get-districts/' + cityID,
+                type: 'GET',
+                success: function (data) {
+                    $('#district').empty().append('<option value="">-Choose City-</option>');
+                    $.each(data, function (key, district) {
+                        $('#district').append('<option value="'+ district.id +'">'+ district.sub_city +'</option>');
+                    });
+                }
+            });
+        } else {
+            $('#district').html('<option value="">-Choose District-</option>');
         }
     });
 </script>

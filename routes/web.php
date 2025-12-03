@@ -121,6 +121,7 @@ Route::middleware(['web', 'jwt.login'])->group(function () {
 
         // === DEPENDENCY ===
         Route::get('/get-cities/{province_id}', [MasterembessyController::class, 'getCities']);
+        Route::get('/get-districts/{city_id}', [MasterembessyController::class, 'getDistricts']);
     });
 });
 

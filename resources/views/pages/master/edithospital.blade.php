@@ -29,7 +29,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label>Edit District</label>
+                <label>Edit Region</label>
                 <select class="form-control" name="province_id">
                     <?php
                         foreach ($provinces as $prov) {
@@ -51,7 +51,7 @@
 
         <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Mukims (sub-districts)</label>
+                <label>Edit Province</label>
                 <select class="form-control" name="city" id="city">
                     <?php
                         foreach ($cities as $city) {
@@ -64,6 +64,28 @@
 
                         ?>
                             <option <?php echo $select; ?> value="<?php echo $city->id;?>"><?php echo $city->city; ?></option>
+
+                    <?php } ?>
+
+                </select>
+            </div>
+        </div>
+
+         <div class="col-md-12">
+            <div class="form-group">
+                <label>Edit City</label>
+                <select class="form-control" name="district_id" id="district">
+                    <?php
+                        foreach ($subcities as $subcity) {
+
+                            if ($subcity->id==$embassy->sub_city) {
+                                $select="selected";
+                            }else{
+                                $select="";
+                            }
+
+                        ?>
+                            <option <?php echo $select; ?> value="<?php echo $subcity->id;?>"><?php echo $subcity->sub_city; ?></option>
 
                     <?php } ?>
 
@@ -1039,6 +1061,26 @@
         } else {
             $('#city').empty();
             $('#city').append('<option value="">-- Choosse City/Regency  --</option>');
+        }
+    });
+
+    $('#city').on('change', function () {
+        let cityID = $(this).val();
+        $('#district').html('<option value="">Loading...</option>');
+
+        if (cityID) {
+            $.ajax({
+                url: '/get-districts/' + cityID,
+                type: 'GET',
+                success: function (data) {
+                    $('#district').empty().append('<option value="">-Choose City-</option>');
+                    $.each(data, function (key, district) {
+                        $('#district').append('<option value="'+ district.id +'">'+ district.sub_city +'</option>');
+                    });
+                }
+            });
+        } else {
+            $('#district').html('<option value="">-Choose District-</option>');
         }
     });
 </script>
