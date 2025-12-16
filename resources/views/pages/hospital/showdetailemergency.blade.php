@@ -295,7 +295,7 @@
                             <div class="hospital-item">
                               <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level66Modal">
                                 <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:24px; height:24px;">
-                                <small>Level 1</small>
+                                <small>Level 3</small>
                               </button>
                             </div>
                           </div>
@@ -315,7 +315,7 @@
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level44Modal">
                                   <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                  <small>Level 3</small>
+                                  <small>Level 1</small>
                                 </button>
                               </div>
                             </div>
@@ -536,7 +536,7 @@
       <div class="modal-header">
          <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 3 — District-Level Hospital</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Level 1 — District-Level Hospital</h5>
          </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -572,7 +572,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 1 — National Referral Hospital</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Level 3 — National Referral Hospital</h5>
         </div>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
