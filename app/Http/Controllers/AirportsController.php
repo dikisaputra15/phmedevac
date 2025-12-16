@@ -7,6 +7,7 @@ use App\Models\Airport;
 use App\Models\Hospital;
 use App\Models\Provincesregion;
 use App\Models\City;
+use App\Models\Subcity;
 use Illuminate\Support\Facades\DB;
 use Exception; // Import Exception for better error handling
 
@@ -189,8 +190,9 @@ class AirportsController extends Controller
         $airport = Airport::findOrFail($id);
         $city = City::findOrFail($airport->city_id);
         $province = Provincesregion::findOrFail($airport->province_id);
+        $subcity = Subcity::findOrFail($airport->sub_city);
 
-        return view('pages.airports.showdetail', compact('airport', 'city', 'province'));
+        return view('pages.airports.showdetail', compact('airport', 'city', 'province','subcity'));
     }
 
     public function showdetailemergency($id)

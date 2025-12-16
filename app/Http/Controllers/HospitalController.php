@@ -81,6 +81,7 @@ class HospitalController extends Controller
         $hospital = Hospital::findOrFail($id);
         $city = DB::table('cities')->where('id', $hospital->city_id)->first();
         $province = DB::table('provincesregions')->where('id', $hospital->province_id)->first();
+        $subcity = DB::table('subcities')->where('id', $hospital->sub_city)->first();
 
         $latitude = $hospital->latitude;
         $longitude = $hospital->longitude;
@@ -105,7 +106,7 @@ class HospitalController extends Controller
         ->orderBy('distance')
         ->get();
 
-        return view('pages.hospital.showdetail', compact('hospital','city','province','nearbyHospitals','nearbyAirports','radius_km'));
+        return view('pages.hospital.showdetail', compact('hospital','city','province','nearbyHospitals','nearbyAirports','radius_km','subcity'));
     }
 
     public function showdetailclinic($id)

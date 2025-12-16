@@ -184,6 +184,7 @@
                     <p>
                         <strong>Address:</strong>
                         {{ $hospital->address }},
+                        {{ $subcity->sub_city }},
                         {{ $city->city }},
                         {{ $province->provinces_region }}, Philippines
                     </p>
