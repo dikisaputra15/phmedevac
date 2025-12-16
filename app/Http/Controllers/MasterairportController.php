@@ -55,7 +55,7 @@ class MasterairportController extends Controller
      */
     public function create()
     {
-         $provinces = Provincesregion::all();
+         $provinces = Provincesregion::orderByRaw('LOWER(provinces_region) ASC')->get();
         return view('pages.master.createairport', [
             'provinces' => $provinces
         ]);
@@ -157,9 +157,9 @@ class MasterairportController extends Controller
         $category = !empty($airport->category) ? explode(', ', $airport->category) : [];
         $public_facilities = !empty($airport->public_facilities) ? explode(', ', $airport->public_facilities) : [];
         $public_transportation = !empty($airport->public_transportation) ? explode(', ', $airport->public_transportation) : [];
-        $provinces = Provincesregion::all();
-        $cities = City::all();
-        $subcities = Subcity::all();
+        $provinces = Provincesregion::orderByRaw('LOWER(provinces_region) ASC')->get();
+        $cities = City::orderByRaw('LOWER(city) ASC')->get();
+        $subcities = Subcity::orderByRaw('LOWER(sub_city) ASC')->get();
         return view('pages.master.editairport', [
             'airport' => $airport,
             'category' => $category,
