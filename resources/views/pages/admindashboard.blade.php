@@ -758,7 +758,7 @@
                     <strong>Country Classification:</strong> ${item.facility_level || 'N/A'}<br>
                     <strong>Address:</strong> ${item.address || 'N/A'}<br>
                     <strong>Coords:</strong> ${item.latitude}, ${item.longitude}<br>
-                    <strong>Province:</strong> ${item.provinces_region || 'N/A'}<br>
+                    <strong>Region:</strong> ${item.provinces_region || 'N/A'}<br>
                 `;
             }
 
@@ -899,7 +899,7 @@
                     </div>
 
                     <hr>
-                    <strong>Province</strong>
+                    <strong>Region</strong>
                     <div style="max-height:120px;overflow-y:auto;border:1px solid #ccc;padding:5px;border-radius:5px;margin-top:6px;">
                         @foreach ($provinces as $p)
                             <div class="form-check">
