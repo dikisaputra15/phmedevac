@@ -121,8 +121,8 @@
                     <label class="form-check-label" for="domestic">Domestic</label>
                 </div>
                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="category[]" id="regionaldomestic" value="Regional Domestic"
-                        {{ in_array('Regional Domestic', $category) ? 'checked' : '' }}>
+                    <input class="form-check-input" type="checkbox" name="category[]" id="regionaldomestic" value="Regional"
+                        {{ in_array('Regional', $category) ? 'checked' : '' }}>
                     <label class="form-check-label" for="regional domestic">Regional Domestic</label>
                 </div>
                  <div class="form-check">
