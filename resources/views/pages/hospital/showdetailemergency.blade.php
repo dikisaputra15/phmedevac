@@ -85,8 +85,6 @@
     }
 
     /* Classification */
-
-    /* Classification section */
     .classification {
       display: flex;
       width: 100%;
