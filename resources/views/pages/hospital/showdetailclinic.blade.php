@@ -268,7 +268,7 @@
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level11Modal">
                                     <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                    <small>Public Health</small>
+                                    <small>Primary Care Facility</small>
                                 </button>
                               </div>
                             </div>
