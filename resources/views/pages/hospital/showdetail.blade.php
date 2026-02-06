@@ -153,6 +153,11 @@
       height: 16px;
       object-fit: contain;
     }
+
+    #level11Modal .modal-body {
+            max-height: 50vh;
+            overflow-y: auto;
+        }
 </style>
 
 @endpush
@@ -347,7 +352,7 @@
                               <div class="hospital-item">
                                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level11Modal">
                                     <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                    <small>Public Health</small>
+                                    <small>Primary Care Facility</small>
                                 </button>
                               </div>
                             </div>
@@ -367,79 +372,142 @@
 </div>
 
 <div class="modal fade" id="level11Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
     <div class="modal-content">
       <div class="modal-header">
          <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Public Health</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Primary Care Facility (PCF)</h5>
          </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><b>Village Health Post – Aid Post (VHP)</b></p>
-        <p class="p-modal text-justify">Basic level primary health care including health promotion, health improvement, and health protection.</p>
-      </div>
-    </div>
-  </div>
-</div>
+        <p class="p-modal text-justify">
+            <b>Primary Care Facility</b> – a first-contact healthcare facility that offers basic services including emergency services and provision for normal deliveries, subdivided into:
+        </p>
 
-<div class="modal fade" id="level22Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-         <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Class 2</h5>
-         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><b>Community Health Post - Health Sub Center (CHP)</b></p>
-        <p class="p-modal text-justify">Primary health, ambulatory care, and short stay inpatient and maternity care at the local rural / remote community level, with a minimum of six (6) health workers to ensure safe 24-hour care and treatment.</p>
-      </div>
-    </div>
-  </div>
-</div>
+        <ol class="p-modal text-justify" type="a">
+            <li>
+                <b>With in-patient beds</b> – a short stay facility where patients can be admitted for a short period of 1 to 3 days, this includes infirmary, dispensary, and birthing home.
+            </li>
 
-<div class="modal fade" id="level33Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-         <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Class 3</h5>
+            <li>
+                <b>Without beds</b> – a facility where medical and/or dental examination and treatment and minor surgical procedures are rendered without confining the patient. This includes the following:
+
+                <ol type="1">
+                    <li>Medical Outpatient Clinic, Overseas Filipino Workers (OFW) Clinics, and Dental Clinics.</li>
+
+                    <li>
+                        <b>Infirmary</b> – a healthcare facility with in-patient beds capable of providing diagnosis and treatment of medical conditions and simple surgical procedures but lacks one or several components required of a hospital, including operating room and/or intensive care unit.
+                    </li>
+
+                    <li>
+                        <b>Dispensary</b> – a healthcare facility where medicine or medical treatment is dispensed. Under the new DOH classification (AO 2012-0012), they are considered a primary care facility with in-patient beds.
+                    </li>
+
+                    <li>
+                        <b>Birthing Home</b> – a facility with in-patient beds that provides maternity services (pre-natal, normal spontaneous delivery, post-natal care) and newborn care. Also called a maternity clinic.
+                    </li>
+
+                    <li>
+                        <b>Medical Outpatient Clinic</b> – an institution or facility providing medical outpatient health services such as diagnostic examination, treatment, and health counseling.
+                    </li>
+
+                    <li>
+                        <b>Specialty Hospital</b> – a hospital that specializes in a particular disease or condition or in one type of patient, licensed as such with no corresponding level of classification. This includes children’s hospitals and orthopedic hospitals.
+                    </li>
+
+                    <li>
+                        <b>Geographically Isolated and Disadvantaged Areas (GIDA)</b> – communities with marginalized populations that are physically and socio-economically separated from mainstream society and characterized by:
+                        <ol type="a">
+                            <li>
+                                <b>Physical Factors</b> – isolated due to distance, weather conditions, and transportation difficulties (island, upland, lowland, landlocked, hard-to-reach and underserved communities).
+                            </li>
+                            <li>
+                                <b>Socio-economic Factors</b> – high poverty incidence, presence of vulnerable sectors, communities in or recovering from crisis or armed conflict.
+                            </li>
+                        </ol>
+                        <i>Note: These areas are identified by the DOH.</i>
+                    </li>
+
+                    <li>
+                        <b>Health Human Resource Shortage (HHRS) areas</b> – areas with inadequate health human resources, determined based on accessibility, terrain, distance, availability of public transport, socio-economic factors, peace and order, and evaluation reports from PhilHealth Regional Offices, DOH offices, and the National Statistics Coordination Board.
+                    </li>
+                </ol>
+            </li>
+        </ol>
+
+        <p class="p-modal text-justify">
+            <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="_blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+        </p>
+
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><b>Health Center - Rural / Urban Clinic – Urban Centers (HC-UC)</b></p>
-        <p class="p-modal text-justify">Primary health and ambulatory care in urban and rural settings, inpatient, maternity, and newborn care in major provincial urban communities.</p>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
 
-<div class="modal fade" id="level44Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-         <div class="d-flex align-items-center">
-            <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 1</h5>
-         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p><b>District Hospital - Rural Health Services (DH)</b></p>
-        <p class="p-modal text-justify">Primary and secondary level clinical services and district wide public health programs.</p>
+    <div class="modal fade" id="level2Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <div class="d-flex align-items-center">
+                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:30px; height:30px;">
+                <h5 class="modal-title" id="disclaimerLabel">Class 2</h5>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p><b>Community Health Post - Health Sub Center (CHP)</b></p>
+            <p class="p-modal">Primary health, ambulatory care, and short stay inpatient and maternity care at the local rural / remote community level, with a minimum of six (6) health workers to ensure safe 24-hour care and treatment.</p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="level3Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <div class="d-flex align-items-center">
+                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
+                <h5 class="modal-title" id="disclaimerLabel">Class D — Sub-district Hospital</h5>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="p-modal">Provides basic inpatient and emergency care with general practitioners and limited specialist support. Mainly located in sub-districts serving as the first referral point before higher-level hospitals.</p>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="level44Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
+        <div class="modal-content">
+        <div class="modal-header">
+            <div class="d-flex align-items-center">
+                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:30px; height:30px;">
+                <h5 class="modal-title" id="disclaimerLabel">Level 1</h5>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="p-modal text-justify">
+                Level 1 hospitals in the Philippines provide core specialist care in internal medicine, surgery, obstetrics, and pediatrics in the Philippines under Department of Health (DOH) licensing standards. These hospitals manage common and uncomplicated medical conditions and provide first-line inpatient facilities and services, with defined referral pathways for complex cases to higher-level hospitals. Level 1 hospitals operate with a bed capacity of up to 50 beds.
+            </p>
+            <p class="p-modal text-justify">
+                These facilities are equipped with basic but essential clinical and support services, including isolation facilities, maternity services, dental clinics, pharmacy services, and blood stations. Diagnostic capabilities include first-level diagnostic imaging (X-ray) and secondary-level clinical laboratory services with a consulting pathologist, ensuring safe and standardized primary hospital care.
+            </p>
+            <p class="p-modal text-justify">
+                <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+            </p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="level55Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
     <div class="modal-content">
       <div class="modal-header">
         <div class="d-flex align-items-center">
@@ -449,15 +517,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><b>Provincial Hospital, Health Services and Public Health Programs (PHA)</b></p>
-        <p class="p-modal text-justify">Secondary level & specialist clinical care services, supporting primary health care, integrating public health programs, and patient referral.</p>
+        <p class="p-modal text-justify">
+           Level 2 hospitals provide broad specialist services with limited subspecialist capability, which function as regional referral centers in the Philippines under Department of Health (DOH) licensing standards. They are equipped to manage moderately complex medical and surgical cases and operate with a bed capacity of up to 100 beds, supported by core inpatient and procedural infrastructure.
+        </p>
+        <p class="p-modal text-justify">
+            These facilities maintain departmentalized clinical services and essential critical care units, including respiratory units, Intensive Care Units (ICU), Neonatal Intensive Care Units (NICU), and High-Risk Pregnancy Units (HRPU). Diagnostic and treatment capabilities include operating theaters, clinical laboratory services, and second-level diagnostic imaging (X-ray), enabling comprehensive secondary-level hospital care.
+        </p>
+        <p class="p-modal text-justify">
+            <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+        </p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="level66Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
     <div class="modal-content">
       <div class="modal-header">
         <div class="d-flex align-items-center">
@@ -467,8 +542,15 @@
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p><b>National Referral Specialist Tertiary and Teaching Hospital - Health Services (NHA)</b></p>
-        <p class="p-modal text-justify">Complex tertiary level clinical services, supporting primary health care, public health programs, and a formalized patient referral arrangement.</p>
+        <p class="p-modal text-justify">
+            Level 3 hospitals are the highest-tier medical facility in the Philippines under the Department of Health (DOH) licensing standards. Level 3 facilities provide comprehensive specialist and subspecialist services supported by advanced medical technology, tertiary diagnostic capabilities, and full referral-level clinical functions. These hospitals manage complex and severe medical cases and operate with a bed capacity exceeding 500 beds, consistent with requirements for tertiary hospital classification.
+        </p>
+        <p class="p-modal text-justify">
+            In addition to full clinical services, Level 3 hospitals function as teaching, training, and research institutions. Their mandated service capabilities include physical medicine and rehabilitation, ambulatory surgery, dialysis services, tertiary-level laboratory facilities, blood banking capacity, and third-level diagnostic imaging (X-ray).
+        </p>
+        <p class="p-modal text-justify">
+            <b>Note:</b> : This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+        </p>
       </div>
     </div>
   </div>

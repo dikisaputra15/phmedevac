@@ -74,17 +74,17 @@
             <div class="form-group">
                 <label>Facility Level</label>
                 <select class="form-control" name="facility_level">
-                    <option value="Level 1">
-                        Level 1
+                    <option value="Level 3">
+                        Level 3
                     </option>
                     <option value="Level 2">
                         Level 2
                     </option>
-                    <option value="Level 3">
-                        Level 3
+                    <option value="Level 1">
+                        Level 1
                     </option>
-                    <option value="Public Health">
-                        Public Health
+                    <option value="Primary Care Facility">
+                        Primary Care Facility
                     </option>
                 </select>
             </div>
