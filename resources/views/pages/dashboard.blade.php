@@ -147,7 +147,7 @@
     .class-medical-classification {border: none; text-align: center;}
     .class-airport-category {border: none;}
     .class-advanced { border-bottom: 3px solid #0070c0; }
-    .class-intermediate { border-bottom: 3px solid #00b050; }
+    .class-intermediate { border-bottom: 3px solid #00b050; padding-inline-start: 20px; padding-inline-end: 20px; }
     .class-basic { border-bottom: 3px solid #ffc000; }
 
     /* Hospital layout */
@@ -289,12 +289,6 @@
                                       <small>Level 2</small>
                                     </button>
                                   </div>
-                                  <div class="hospital-item">
-                                    <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level44Modal">
-                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
-                                      <small>Level 1</small>
-                                    </button>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -304,10 +298,16 @@
                               <div class="class-header class-basic">Basic</div>
                               <div class="hospital-list">
                                 <div class="hospital-row">
+                                    <div class="hospital-item">
+                                    <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level44Modal">
+                                      <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:24px; height:24px;">
+                                      <small>Level 1</small>
+                                    </button>
+                                  </div>
                                   <div class="hospital-item">
                                     <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level11Modal">
                                         <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:24px; height:24px;">
-                                        <small>Primary Care Facility</small>
+                                        <small>Primary Care Facility (Level A)</small>
                                     </button>
                                   </div>
                                 </div>
