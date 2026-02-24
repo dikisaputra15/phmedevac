@@ -86,6 +86,7 @@ class MasterembessyController extends Controller
         $embassy->website = $request->input('website');
         $embassy->latitude = $request->input('latitude');
         $embassy->longitude = $request->input('longitude');
+        $embassy->note = $request->input('note');
 
         $embassy->save();
         return redirect()->route('embessydata.index')->with('success', 'Data Succesfully Save');
@@ -137,6 +138,7 @@ class MasterembessyController extends Controller
             'website' => $request->input('website'),
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
+            'note' => $request->input('note'),
         ];
 
          if ($request->hasFile('image')) {

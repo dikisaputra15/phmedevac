@@ -128,28 +128,38 @@
             <div class="card">
                 <div class="card-header fw-bold"><i class="fas fa-phone"></i> Contact Information</div>
                 <div class="card-body">
-                <p>
-                    <strong>Telephone:</strong> {!! $embassy->telephone ?? '-' !!}
-                </p>
-                <p>
-                    <strong>Fax:</strong> {!! $embassy->fax ?? '-' !!}
-                </p>
-                    <strong>Email:</strong> {!! $embassy->email ?? '-' !!}
-                </p>
-                <p>
-                    <strong>Website:</strong> {!! $embassy->website !!}
-                </p>
-                <p>
-                    <strong>Latitude:</strong> {{ $embassy->latitude ?? '-' }}
-                </p>
-                <p>
-                    <strong>Longitude:</strong> {{ $embassy->longitude ?? '-' }}
-                </p>
-                 <p>
-                    <strong>Location:</strong> {{ $embassy->location ?? '-' }}
-                </p>
+                    <p>
+                        <strong>Telephone:</strong> {!! $embassy->telephone ?? '-' !!}
+                    </p>
+                    <p>
+                        <strong>Fax:</strong> {!! $embassy->fax ?? '-' !!}
+                    </p>
+                        <strong>Email:</strong> {!! $embassy->email ?? '-' !!}
+                    </p>
+                    <p>
+                        <strong>Website:</strong> {!! $embassy->website !!}
+                    </p>
+                    <p>
+                        <strong>Latitude:</strong> {{ $embassy->latitude ?? '-' }}
+                    </p>
+                    <p>
+                        <strong>Longitude:</strong> {{ $embassy->longitude ?? '-' }}
+                    </p>
+                    <p>
+                        <strong>Location:</strong> {{ $embassy->location ?? '-' }}
+                    </p>
+                </div>
             </div>
+
+            @if(!empty($embassy->note))
+            <div class="card">
+                <div class="card-header fw-bold">Note</div>
+                <div class="card-body">
+                    <p class="text-justify">{{ $embassy->note }}</p>
+                </div>
             </div>
+            @endif
+
         </div>
         <div class="col-md-8">
             <div class="card">
