@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@section('page-title', 'Papua New Guinea Crisis Management Tools')
+@section('page-title', 'Philippine Crisis Management Tools')
 
 @push('styles')
 
@@ -324,17 +324,17 @@
 
                     <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                         <i class="bi bi-airplane fs-3"></i>
-                        <small>Airports</small>
-                    </a>
-
-                    <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
-                    <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                        <small>Medical</small>
+                        <small>Aviations</small>
                     </a>
 
                     <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                         <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                         <small>Air Charter</small>
+                    </a>
+
+                    <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
+                    <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                        <small>Medical</small>
                     </a>
 
                     <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
@@ -803,8 +803,12 @@
                 popupContent = `
                     <h5 style="border-bottom:1px solid #cccccc;">${itemName}</h5>
                     <strong>Classification:</strong> ${item.category || 'N/A'}<br>
-                    <strong>Address:</strong> ${item.address || 'N/A'}<br>
-                    ${item.website ? `<strong>Website:</strong> <a href='${item.website}' target='__blank'>${item.website}</a><br>` : ''}
+                    <strong>Address:</strong>
+                        ${item.address || 'N/A'}
+                        ${item.sub_city ? ', ' + item.sub_city : ''}
+                        ${item.city ? ', ' + item.city : ''}
+                        ${item.province_name ? ', ' + item.province_name : ''}, Philippines <br>
+                    <strong>Website:</strong> ${item.website || 'N/A'} <br>
                 `;
             } else if (item.name) {
                 itemName = item.name;
@@ -813,9 +817,11 @@
                     <h5 style="border-bottom:1px solid #cccccc;">${itemName}</h5>
                     <strong>Global Classification:</strong> ${item.facility_category || 'N/A'}<br>
                     <strong>Country Classification:</strong> ${item.facility_level || 'N/A'}<br>
-                    <strong>Address:</strong> ${item.address || 'N/A'}<br>
-                    <strong>Coords:</strong> ${item.latitude}, ${item.longitude}<br>
-                    <strong>Region:</strong> ${item.provinces_region || 'N/A'}<br>
+                    <strong>Address:</strong>
+                        ${item.address || 'N/A'}
+                        ${item.sub_city ? ', ' + item.sub_city : ''}
+                        ${item.city ? ', ' + item.city : ''}
+                        ${item.province_name ? ', ' + item.province_name : ''}, Philippines <br>
                 `;
             }
 
@@ -922,7 +928,7 @@
                     <select id="mapFilter" class="form-select form-select-sm mb-2">
                         <option value="all">Show All</option>
                         <option value="hospital">Hospitals</option>
-                        <option value="airport">Airports</option>
+                        <option value="airport">Aviations</option>
                     </select>
 
                     <div id="airportFilter" style="display:none;">

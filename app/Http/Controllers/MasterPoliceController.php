@@ -70,6 +70,7 @@ class MasterPoliceController extends Controller
 
         $police->province_id = $request->input('province_id');
         $police->city_id = $request->input('city');
+        $police->sub_city = $request->input('district_id');
         $police->name_police = $request->input('name_police');
         $police->classification = $request->input('classification');
         $police->level = $request->input('level');
@@ -93,11 +94,13 @@ class MasterPoliceController extends Controller
      public function edit($id)
     {
         $police = Police::findOrFail($id);
-        $provinces = Provincesregion::all();
-        $cities = City::all();
+        $provinces = Provincesregion::orderByRaw('LOWER(provinces_region) ASC')->get();
+        $cities = City::orderByRaw('LOWER(city) ASC')->get();
+        $subcities = Subcity::orderByRaw('LOWER(sub_city) ASC')->get();
         return view('pages.master.editpolice', [
             'police' => $police,
             'provinces' => $provinces,
+            'subcities' => $subcities,
             'cities' => $cities
         ]);
     }
@@ -111,6 +114,7 @@ class MasterPoliceController extends Controller
         $data = [
             'province_id' => $request->input('province_id'),
             'city_id' => $request->input('city'),
+            'sub_city' => $request->input('district_id'),
             'name_police' => $request->input('name_police'),
             'classification' => $request->input('classification'),
             'level' => $request->input('level'),

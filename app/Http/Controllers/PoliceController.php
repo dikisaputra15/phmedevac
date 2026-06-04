@@ -12,11 +12,11 @@ use Exception;
 
 class PoliceController extends Controller
 {
-    public function index(Request $request)
+     public function index(Request $request)
     {
         // Using `unique()` and `values()` on collections ensures distinct, sorted results.
         // `filter()` removes null/empty values.
-        $policeNames = Police::distinct()->pluck('name_police')->filter()->sort()->values();
+        $policeNames = Police::where('police_status', true)->distinct()->pluck('name_police')->filter()->sort()->values();
         $policeCategories = Police::distinct()->pluck('category')->filter()->sort()->values();
         $policeLocations = Police::distinct()->pluck('location')->filter()->sort()->values();
 
@@ -27,7 +27,16 @@ class PoliceController extends Controller
 
      public function filter(Request $request)
     {
-        $query = Police::query();
+        $query = Police::query()
+                ->leftJoin('cities', 'police.city_id', '=', 'cities.id')
+                ->leftJoin('subcities', 'police.sub_city', '=', 'subcities.id')
+                ->leftJoin('provincesregions', 'police.province_id', '=', 'provincesregions.id')
+                ->select(
+                    'police.*',
+                    'cities.city',
+                    'subcities.sub_city',
+                    'provincesregions.provinces_region'
+                );
 
         $query->where('police_status', true);
 
@@ -51,7 +60,7 @@ class PoliceController extends Controller
             // Ensure province IDs are an array and valid integers
             $provinceIds = array_filter((array) $request->input('provinces'), 'is_numeric');
             if (!empty($provinceIds)) {
-                $q->whereIn('province_id', $provinceIds);
+                $q->whereIn('police.province_id', $provinceIds);
             }
         });
 
@@ -72,7 +81,7 @@ class PoliceController extends Controller
             $haversine = "(6371 * acos(cos(radians(?)) * cos(radians(latitude))
                             * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))))";
 
-            $query->selectRaw("police.*, $haversine AS distance", [
+            $query->selectRaw("police.*, districts.district as district_name, cities.city as city_name, provincesregions.provinces_region as province_name, $haversine AS distance", [
                     $centerLat, $centerLng, $centerLat
                 ])
                 ->whereRaw("$haversine < ?", [
@@ -141,7 +150,8 @@ class PoliceController extends Controller
     {
         $police = Police::findOrFail($id);
         $city = DB::table('cities')->where('id', $police->city_id)->first();
+        $district = DB::table('districts')->where('id', $police->district_id)->first();
         $province = DB::table('provincesregions')->where('id', $police->province_id)->first();
-        return view('pages.police.showdetail', compact('police','city','province'));
+        return view('pages.police.showdetail', compact('police','city','district','province'));
     }
 }

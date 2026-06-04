@@ -203,7 +203,7 @@
             <!-- Button 5 -->
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
+                <small>Aviations</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nearbyHospitals = @json($nearbyHospitals);
     const nearbyAirports = @json($nearbyAirports);
-    let radiusKm = {{ $radius_km }}; // default radius
+    let radiusKm = 100; // default radius
 
     let map, mainMarker, radiusCircle, routingControl = null;
     let nearbyMarkersGroup = L.featureGroup();
@@ -870,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <select id="mapFilter" class="form-select form-select-sm mb-2">
                     <option value="all">Show All</option>
                     <option value="hospital">Hospitals</option>
-                    <option value="airport">Airports</option>
+                    <option value="airport">Aviations</option>
                 </select>
 
                 <div id="hospitalFilter" style="display:none;">
@@ -929,7 +929,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filterSelect.value = 'all';
                 hospitalDiv.style.display = 'none';
                 airportDiv.style.display = 'none';
-                radiusKm = {{ $radius_km }};
+                radiusKm = 100;
                 radiusSlider.value = radiusKm;
                 radiusLabel.textContent = radiusKm;
                 refresh();

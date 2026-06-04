@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@section('page-title', 'Papua New Guinea Crisis Management Tools')
+@section('page-title', 'Philippine Crisis Management Tools')
 
 @push('styles')
 
@@ -123,7 +123,7 @@
             margin-bottom: 0.5rem !important;
         }
 
-         /* Classification section */
+    /* Classification section */
     .classification {
       display: flex;
       width: 100%;
@@ -147,7 +147,7 @@
     .class-medical-classification {border: none; text-align: center;}
     .class-airport-category {border: none;}
     .class-advanced { border-bottom: 3px solid #0070c0; }
-    .class-intermediate { border-bottom: 3px solid #00b050; padding-inline-start: 20px; padding-inline-end: 20px;}
+    .class-intermediate { border-bottom: 3px solid #00b050; padding-inline-start: 20px; padding-inline-end: 20px; }
     .class-basic { border-bottom: 3px solid #ffc000; }
 
     /* Hospital layout */
@@ -202,7 +202,7 @@
             max-height: 50vh;
             overflow-y: auto;
         }
-</style>
+    </style>
 
 @endpush
 
@@ -210,7 +210,7 @@
 
 <div class="card">
     <div class="row" style="background-color: #dfeaf1;">
-         <div class="col-md-9">
+        <div class="col-md-9">
             <div class="d-flex p-3" style="justify-content: center;">
                 <div class="d-flex gap-2">
 
@@ -318,23 +318,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+         <div class="col-md-3">
             <div class="d-flex justify-content-end p-3">
                 <div class="d-flex gap-2 mt-2">
 
                     <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                         <i class="bi bi-airplane fs-3"></i>
-                        <small>Airports</small>
-                    </a>
-
-                    <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
-                    <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                        <small>Medical</small>
+                        <small>Aviations</small>
                     </a>
 
                     <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                         <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                         <small>Air Charter</small>
+                    </a>
+
+                    <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
+                    <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                        <small>Medical</small>
                     </a>
 
                     <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
@@ -349,36 +349,6 @@
 </div>
 
 <div id="map"></div>
-
-<div class="row justify-content-center mt-3">
-
-    <div class="col-lg-3 col-6">
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h3 id="totalHospitalsDisplay">{{ $totalhospital }}</h3>
-
-          <p>Medical Facility</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-        </div>
-
-      </div>
-    </div>
-    <div class="col-lg-3 col-6">
-      <div class="small-box bg-success">
-        <div class="inner">
-          <h3 id="totalAirportsDisplay">{{ $totalairport }}</h3>
-
-          <p>Airport</p>
-        </div>
-        <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-        </div>
-
-      </div>
-    </div>
-</div>
 
 <div class="modal fade" id="level1Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -472,7 +442,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="d-flex align-items-center">
-            <img src="https://concord-consulting.com/static/img/cmt/icon/icon-international-airport-orange.png" style="width:30px; height:30px;">
+            <img src="https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png" style="width:30px; height:30px;">
             <h5 class="modal-title" id="disclaimerLabel">International Airfield</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -833,8 +803,12 @@
                 popupContent = `
                     <h5 style="border-bottom:1px solid #cccccc;">${itemName}</h5>
                     <strong>Classification:</strong> ${item.category || 'N/A'}<br>
-                    <strong>Address:</strong> ${item.address || 'N/A'}<br>
-                    ${item.website ? `<strong>Website:</strong> <a href='${item.website}' target='__blank'>${item.website}</a><br>` : ''}
+                    <strong>Address:</strong>
+                        ${item.address || 'N/A'}
+                        ${item.sub_city ? ', ' + item.sub_city : ''}
+                        ${item.city ? ', ' + item.city : ''}
+                        ${item.province_name ? ', ' + item.province_name : ''}, Philippines <br>
+                    <strong>Website:</strong> ${item.website || 'N/A'} <br>
                 `;
             } else if (item.name) {
                 itemName = item.name;
@@ -843,9 +817,11 @@
                     <h5 style="border-bottom:1px solid #cccccc;">${itemName}</h5>
                     <strong>Global Classification:</strong> ${item.facility_category || 'N/A'}<br>
                     <strong>Country Classification:</strong> ${item.facility_level || 'N/A'}<br>
-                    <strong>Address:</strong> ${item.address || 'N/A'}<br>
-                    <strong>Coords:</strong> ${item.latitude}, ${item.longitude}<br>
-                    <strong>Region:</strong> ${item.provinces_region || 'N/A'}<br>
+                    <strong>Address:</strong>
+                        ${item.address || 'N/A'}
+                        ${item.sub_city ? ', ' + item.sub_city : ''}
+                        ${item.city ? ', ' + item.city : ''}
+                        ${item.province_name ? ', ' + item.province_name : ''}, Philippines <br>
                 `;
             }
 
@@ -952,7 +928,7 @@
                     <select id="mapFilter" class="form-select form-select-sm mb-2">
                         <option value="all">Show All</option>
                         <option value="hospital">Hospitals</option>
-                        <option value="airport">Airports</option>
+                        <option value="airport">Aviations</option>
                     </select>
 
                     <div id="airportFilter" style="display:none;">

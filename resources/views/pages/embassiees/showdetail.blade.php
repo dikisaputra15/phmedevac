@@ -89,7 +89,7 @@
             <!-- Button 5 -->
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
+                <small>Aviations</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">

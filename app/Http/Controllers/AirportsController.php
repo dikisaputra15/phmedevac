@@ -36,7 +36,16 @@ class AirportsController extends Controller
      */
     public function filter(Request $request)
     {
-        $query = Airport::query();
+        $query = Airport::query()
+            ->leftJoin('cities', 'airports.city_id', '=', 'cities.id')
+            ->leftJoin('subcities', 'airports.sub_city', '=', 'subcities.id')
+            ->leftJoin('provincesregions', 'airports.province_id', '=', 'provincesregions.id')
+            ->select(
+                'airports.*',
+                'cities.city',
+                'subcities.sub_city',
+                'provincesregions.provinces_region'
+            );
 
         $query->where('airport_status', true);
 
@@ -67,7 +76,7 @@ class AirportsController extends Controller
             // Ensure province IDs are an array and valid integers
             $provinceIds = array_filter((array) $request->input('provinces'), 'is_numeric');
             if (!empty($provinceIds)) {
-                $q->whereIn('province_id', $provinceIds);
+                $q->whereIn('airports.province_id', $provinceIds);
             }
         });
 

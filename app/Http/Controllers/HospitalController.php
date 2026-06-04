@@ -147,10 +147,16 @@ class HospitalController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Hospital::query();
-        $query->join('cities', 'hospitals.province_id', '=', 'cities.id');
-        $query->join('provincesregions', 'hospitals.province_id', '=', 'provincesregions.id');
-        $query->select('hospitals.*', 'cities.city', 'provincesregions.provinces_region');
+        $query = Hospital::query()
+                ->leftJoin('cities', 'hospitals.city_id', '=', 'cities.id')
+                ->leftJoin('subcities', 'hospitals.sub_city', '=', 'subcities.id')
+                ->leftJoin('provincesregions', 'hospitals.province_id', '=', 'provincesregions.id')
+                ->select(
+                    'hospitals.*',
+                    'cities.city',
+                    'subcities.sub_city',
+                    'provincesregions.provinces_region'
+                );
 
         $query->where('hospital_status', true);
 

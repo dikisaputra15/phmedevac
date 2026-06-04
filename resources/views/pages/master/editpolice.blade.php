@@ -22,12 +22,12 @@
 
          <div class="col-md-12">
             <div class="form-group">
-                <label>Region</label>
-                <select class="form-control" name="province_id" id="city">
+                <label>Edit Region</label>
+                <select class="form-control" name="province_id">
                     <?php
                         foreach ($provinces as $prov) {
 
-                            if ($prov->id==$police->province_id) {
+                            if ($prov->id==$airport->province_id) {
                                 $select="selected";
                             }else{
                                 $select="";
@@ -42,14 +42,14 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+         <div class="col-md-12">
             <div class="form-group">
-                <label>Edit Township</label>
+                <label>Edit Province</label>
                 <select class="form-control" name="city" id="city">
                     <?php
                         foreach ($cities as $city) {
 
-                            if ($city->id==$police->city_id) {
+                            if ($city->id==$airport->city_id) {
                                 $select="selected";
                             }else{
                                 $select="";
@@ -57,6 +57,28 @@
 
                         ?>
                             <option <?php echo $select; ?> value="<?php echo $city->id;?>"><?php echo $city->city; ?></option>
+
+                    <?php } ?>
+
+                </select>
+            </div>
+        </div>
+
+         <div class="col-md-12">
+            <div class="form-group">
+                <label>Edit City</label>
+                <select class="form-control" name="district_id" id="district">
+                    <?php
+                        foreach ($subcities as $subcity) {
+
+                            if ($subcity->id==$airport->sub_city) {
+                                $select="selected";
+                            }else{
+                                $select="";
+                            }
+
+                        ?>
+                            <option <?php echo $select; ?> value="<?php echo $subcity->id;?>"><?php echo $subcity->sub_city; ?></option>
 
                     <?php } ?>
 
@@ -150,27 +172,27 @@
                 <label>Edit Police Category</label><br>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="category" value="Myanmar Police Force (National HQ)"
-                        {{ old('Myanmar Police Force (National HQ)', $police->category ?? '') == 'Myanmar Police Force (National HQ)' ? 'checked' : '' }}>
-                    <label class="form-check-label">Myanmar Police Force (National HQ)</label>
+                    <input class="form-check-input" type="radio" name="category" value="Philippine National Police (National Headquarters)"
+                        {{ old('Philippine National Police (National Headquarters)', $police->category ?? '') == 'Philippine National Police (National Headquarters)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Philippine National Police (National Headquarters)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="category" value="State / Region Police Command"
-                        {{ old('State / Region Police Command', $police->category ?? '') == 'State / Region Police Command' ? 'checked' : '' }}>
-                    <label class="form-check-label">State / Region Police Command</label>
+                    <input class="form-check-input" type="radio" name="category" value="Police Regional Office (PRO)"
+                        {{ old('Police Regional Office (PRO)', $police->category ?? '') == 'Police Regional Office (PRO)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Police Regional Office (PRO)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="category" value="District Police Command"
-                        {{ old('District Police Command', $police->category ?? '') == 'District Police Command' ? 'checked' : '' }}>
-                    <label class="form-check-label">District Police Command</label>
+                    <input class="form-check-input" type="radio" name="category" value="Provincial Police Office (PPO)"
+                        {{ old('Provincial Police Office (PPO)', $police->category ?? '') == 'Provincial Police Office (PPO)' ? 'checked' : '' }}>
+                    <label class="form-check-label">Provincial Police Office (PPO)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="category" value="Township Police Station"
-                        {{ old('Township Police Station', $police->category ?? '') == 'Township Police Station' ? 'checked' : '' }}>
-                    <label class="form-check-label">Township Police Station</label>
+                    <input class="form-check-input" type="radio" name="category" value="City Police Station"
+                        {{ old('City Police Station', $police->category ?? '') == 'City Police Station' ? 'checked' : '' }}>
+                    <label class="form-check-label">City Police Station</label>
                 </div>
             </div>
         </div>
@@ -276,10 +298,10 @@
 
         @php
             $icons = [
-                ['url' => asset('images/dot-blue-ring-royal-papua.png'), 'label' => 'Myanmar Police Force (National HQ)'],
-                ['url' => asset('images/dot-red.png'), 'label' => 'State / Region Police Command'],
-                ['url' => asset('images/dot-orange-ppc.png'), 'label' => 'District Police Command'],
-                ['url' => asset('images/dot-green.png'), 'label' => 'Township Police Station'],
+                ['url' => asset('images/dot-blue-ring-royal-papua.png'), 'label' => 'Philippine National Police (National Headquarters)'],
+                ['url' => asset('images/dot-red.png'), 'label' => 'Police Regional Office (PRO)'],
+                ['url' => asset('images/dot-orange-ppc.png'), 'label' => 'Provincial Police Office (PPO)'],
+                ['url' => asset('images/dot-green.png'), 'label' => 'City Police Station'],
             ];
         @endphp
 
@@ -318,6 +340,7 @@
 
   })
 </script>
+
 <script>
     $('#province').on('change', function () {
         var provinceId = $(this).val();
@@ -327,7 +350,7 @@
                 type: 'GET',
                 success: function (data) {
                     $('#city').empty();
-                    $('#city').append('<option value="">-- Choosse Township --</option>');
+                    $('#city').append('<option value="">-- Choosse City/Regency --</option>');
                     $.each(data, function (key, city) {
                         $('#city').append('<option value="' + city.id + '">' + city.city + '</option>');
                     });
@@ -335,7 +358,27 @@
             });
         } else {
             $('#city').empty();
-            $('#city').append('<option value="">-- Choosse Township  --</option>');
+            $('#city').append('<option value="">-- Choosse City/Regency  --</option>');
+        }
+    });
+
+    $('#city').on('change', function () {
+        let cityID = $(this).val();
+        $('#district').html('<option value="">Loading...</option>');
+
+        if (cityID) {
+            $.ajax({
+                url: '/get-districts/' + cityID,
+                type: 'GET',
+                success: function (data) {
+                    $('#district').empty().append('<option value="">-Choose City-</option>');
+                    $.each(data, function (key, district) {
+                        $('#district').append('<option value="'+ district.id +'">'+ district.sub_city +'</option>');
+                    });
+                }
+            });
+        } else {
+            $('#district').html('<option value="">-Choose District-</option>');
         }
     });
 </script>

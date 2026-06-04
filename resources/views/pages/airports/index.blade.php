@@ -117,17 +117,17 @@
 
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
-            </a>
-
-            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
-             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                <small>Medical</small>
+                <small>Aviations</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                   <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                 <small>Air Charter</small>
+            </a>
+
+            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
+             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                <small>Medical</small>
             </a>
 
             <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
@@ -448,9 +448,13 @@ function addAirportMarkers(data) {
         marker.bindPopup(`
             <h5 style="border-bottom:1px solid #ccc;">${airport.airport_name || 'N/A'}</h5>
             <strong>Classification:</strong> ${airport.category || 'N/A'}<br>
-            <strong>Address:</strong> ${airport.address || 'N/A'}<br>
+            <strong>Address:</strong>
+                ${airport.address || 'N/A'}
+                ${airport.sub_city ? ', ' + airport.sub_city : ''}
+                ${airport.city ? ', ' + airport.city : ''}
+                ${airport.province_name ? ', ' + airport.province_name : ''}, Philippines<br>
             <strong>Telephone:</strong> ${airport.telephone || 'N/A'}<br>
-            ${airport.website ? `<strong>Website:</strong><a href='${airport.website}' target='__blank'> ${airport.website} </a><br>` : ''}
+            <strong>Website:</strong> ${airport.website || 'N/A'} <br>
             ${airport.id ? `<a href="/airports/${airport.id}/detail" class="btn btn-primary btn-sm mt-2" style="color:white;">Read More</a>` : ''}
         `);
     });

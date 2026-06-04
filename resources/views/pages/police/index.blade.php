@@ -117,17 +117,17 @@
 
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
-            </a>
-
-            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
-             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                <small>Medical</small>
+                <small>Aviations</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                   <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                 <small>Air Charter</small>
+            </a>
+
+            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
+             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                <small>Medical</small>
             </a>
 
             <a href="{{ url('police') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('police') ? 'active' : '' }}">
@@ -149,31 +149,31 @@
             <div class="d-flex align-items-center gap-2">
                 <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
                     <i class="bi bi-info-circle text-primary fs-5"></i>
-                    Disclaimer
+                    <small>Disclaimer</small>
                 </button>
             </div>
 
             <div class="d-flex align-items-center gap-3">
-                <span class="fw-bold me-2">Map Legend:</span>
+                <span class="fw-bold me-2"><small>Map Legend:</small></span>
 
                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level6Modal">
-                    <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:15px; height:15px;">
-                    <small>Myanmar Police Force (National HQ)</small>
+                    <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:12px; height:12px;">
+                    <small>Philippine National Police (National Headquarters)</small>
                 </button>
 
                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level5Modal">
-                    <img src="{{ asset('images/dot-red.png') }}" style="width:15px; height:15px;">
-                    <small>State / Region Police Command</small>
+                    <img src="{{ asset('images/dot-red.png') }}" style="width:12px; height:12px;">
+                    <small>Police Regional Office (PRO)</small>
                 </button>
 
                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level4Modal">
-                    <img src="{{ asset('images/dot-orange-ppc.png') }}" style="width:15px; height:15px;">
-                    <small>District Police Command</small>
+                    <img src="{{ asset('images/dot-orange-ppc.png') }}" style="width:12px; height:12px;">
+                    <small>Provincial Police Office (PPO)</small>
                 </button>
 
                 <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level3Modal">
-                    <img src="{{ asset('images/dot-green.png') }}" style="width:15px; height:15px;">
-                    <small>Township Police Station</small>
+                    <img src="{{ asset('images/dot-green.png') }}" style="width:12px; height:12px;">
+                    <small>City Police Station</small>
                 </button>
 
             </div>
@@ -203,7 +203,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
              <img src="{{ asset('images/dot-green.png') }}" style="width:15px; height:15px;">
-            <h5 class="modal-title" id="disclaimerLabel">Police Station</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Township Police Station</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -220,7 +220,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="{{ asset('images/dot-orange-ppc.png') }}" style="width:15px; height:15px;">
-            <h5 class="modal-title" id="disclaimerLabel">Provincial Police Command (PPC)</h5>
+            <h5 class="modal-title" id="disclaimerLabel">District Police Command</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -237,7 +237,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="{{ asset('images/dot-red.png') }}" style="width:15px; height:15px;">
-            <h5 class="modal-title" id="disclaimerLabel">Divisional Command</h5>
+            <h5 class="modal-title" id="disclaimerLabel">State / Region Police Command</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -254,7 +254,7 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:15px; height:15px;">
-            <h5 class="modal-title" id="disclaimerLabel">Royal Papua New Guinea Constabulary (Commissioner HQ)</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Myanmar Police Force (National HQ)</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -360,7 +360,7 @@ function addPoliceMarkers(data) {
 
         const icon = L.icon({
             iconUrl: police.icon ? police.icon : 'https://png.pngtree.com/png-vector/20221211/ourmid/pngtree-minimal-location-map-icon-logo-symbol-vector-design-transparent-background-png-image_6520892.png',
-            iconSize: [16, 16],
+            iconSize: [12, 12],
             iconAnchor: [15, 30],
             popupAnchor: [0, -25]
         });
@@ -372,7 +372,11 @@ function addPoliceMarkers(data) {
 
         marker.bindPopup(`
             <h5>${police.name_police || 'N/A'}</h5>
-            <strong>Address:</strong> ${police.location || 'N/A'}<br>
+            <strong>Address:</strong>
+                ${police.location || 'N/A'}
+                ${police.city_name || 'N/A'}
+                ${police.district_name || 'N/A'}
+                ${police.province_name || 'N/A'}, Myanmar<br>
             <strong>Phone:</strong> ${police.telephone || 'N/A'}<br>
             <strong>Website:</strong> ${police.website || 'N/A'}<br>
             ${police.id ? `<a href="/police/${police.id}/detail" class="btn btn-primary btn-sm mt-2" style="color:white;">Read More</a>` : ''}
@@ -511,7 +515,7 @@ const FilterPanel = L.Control.extend({
 
                 <hr>
 
-                <strong>Region</strong>
+                <strong>Province</strong>
                 <div style="max-height:120px;overflow-y:auto;border:1px solid #ccc;padding:5px;border-radius:5px;margin-top:6px;">
                     @foreach ($provinces as $p)
                         <div class="form-check">

@@ -82,7 +82,16 @@ class EmbassieesController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Embassiees::query();
+        $query = Embassiees::query()
+                ->leftJoin('cities', 'embassiees.city_id', '=', 'cities.id')
+                ->leftJoin('subcities', 'embassiees.sub_city', '=', 'subcities.id')
+                ->leftJoin('provincesregions', 'embassiees.province_id', '=', 'provincesregions.id')
+                ->select(
+                    'embassiees.*',
+                    'cities.city',
+                    'subcities.sub_city',
+                    'provincesregions.provinces_region'
+                );
 
         $query->where('embassy_status', true);
 
@@ -101,7 +110,7 @@ class EmbassieesController extends Controller
             // Ensure province IDs are an array and valid integers
             $provinceIds = array_filter((array) $request->input('provinces'), 'is_numeric');
             if (!empty($provinceIds)) {
-                $q->whereIn('province_id', $provinceIds);
+                $q->whereIn('embassiees.province_id', $provinceIds);
             }
         });
 

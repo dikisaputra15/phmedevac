@@ -144,17 +144,17 @@
 
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
-            </a>
-
-            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
-             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                <small>Medical</small>
+                <small>Aviations</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                   <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                 <small>Air Charter</small>
+            </a>
+
+            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
+             <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                <small>Medical</small>
             </a>
 
             <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
@@ -171,20 +171,20 @@
         <div class="d-flex align-items-center gap-2">
             <button class="btn btn-link p-0 fw-bold text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#disclaimerModal">
                 <i class="bi bi-info-circle text-primary fs-5"></i>
-                Disclaimer
+                <small>Disclaimer</small>
             </button>
         </div>
 
         <div class="d-flex align-items-end gap-3">
             <div style="margin-right:20px;">
-                <span class="fw-bold pb-2 d-inline-block">Classification:</span>
+                <span class="fw-bold pb-2 d-inline-block"><small>Classification:</small></span>
             </div>
             <!-- Classification -->
             <div class="text-end" style="min-width: 700px;">
                 <div class="row">
                     <div class="col-3 text-center fw-bold advanced br">Advanced</div>
-                    <div class="col-4 text-center fw-bold intermediete br">Intermediate</div>
-                    <div class="col-5 text-center fw-bold basic">Basic</div>
+                    <div class="col-3 text-center fw-bold intermediete br">Intermediate</div>
+                    <div class="col-6 text-center fw-bold basic">Basic</div>
                 </div>
 
                 <div class="row text-center">
@@ -197,20 +197,20 @@
                     </div>
 
                     <!-- Intermediete -->
-                     <div class="col-2 text-primary">
+                     <div class="col-3 text-primary br">
                         <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level5Modal">
                             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:30px; height:30px;">
                             <small>Level 2</small>
                         </button>
                     </div>
-                    <div class="col-2 text-purple br">
+
+                    <!-- Basic -->
+                    <div class="col-3 text-purple">
                         <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level4Modal">
                             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:30px; height:30px;">
                             <small>Level 1</small>
                         </button>
                     </div>
-
-                    <!-- Basic -->
                     <div class="col-3 text-info">
                         <button class="btn p-1" data-bs-toggle="modal" data-bs-target="#level1Modal">
                             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:30px; height:30px;">
@@ -568,9 +568,11 @@ function addHospitalMarkers(data) {
             <h5 style="border-bottom:1px solid #ccc;">${h.name || 'N/A'}</h5>
             <strong>Global Classification:</strong> ${h.facility_category || 'N/A'}<br>
             <strong>Country Classification:</strong> ${h.facility_level || 'N/A'}<br>
-            <strong>Address:</strong> ${h.address || 'N/A'}<br>
-            <strong>Coords:</strong> ${h.latitude}, ${h.longitude}<br>
-            <strong>Region:</strong> ${h.provinces_region || 'N/A'}<br>
+            <strong>Address:</strong>
+                ${h.address || 'N/A'}
+                ${h.sub_city ? ', ' + h.sub_city : ''}
+                ${h.city ? ', ' + h.city : ''}
+                ${h.provinces_region ? ', ' + h.provinces_region : ''}, Philippines <br>
             ${h.id ? `<a href="/hospitals/${h.id}" class="btn btn-primary btn-sm mt-2" style="color:white;">Read More</a>` : ''}
         `);
     });
