@@ -153,9 +153,9 @@
                  <p>
                     <strong>Location:</strong>
                     {{ $police->location ?? '-' }},
-                    {{ $city->city ?? '-' }},
-                    {{ $district->district ?? '-' }},
-                    {{ $province->provinces_region ?? '-' }}, Myanmar
+                    {{ $subcity->sub_city }},
+                    {{ $city->city }},
+                    {{ $province->provinces_region ?? '-' }}, Philippines
                 </p>
             </div>
             </div>

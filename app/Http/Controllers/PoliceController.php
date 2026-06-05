@@ -150,8 +150,8 @@ class PoliceController extends Controller
     {
         $police = Police::findOrFail($id);
         $city = DB::table('cities')->where('id', $police->city_id)->first();
-        $district = DB::table('districts')->where('id', $police->district_id)->first();
+        $subcity = Subcity::findOrFail($police->sub_city);
         $province = DB::table('provincesregions')->where('id', $police->province_id)->first();
-        return view('pages.police.showdetail', compact('police','city','district','province'));
+        return view('pages.police.showdetail', compact('police','city','subcity','province'));
     }
 }
