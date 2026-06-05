@@ -1,11 +1,10 @@
 <nav class="navbar">
     <div class="d-flex align-items-center w-100 justify-content-between">
-        <div class="d-flex align-items-center">
-            <a href="/home">
-                <img src="{{ asset('images/CMT-logo.png') }}" alt="CMT Logo" class="brand-image">
-            </a>
-            <h5 class="mb-0 ml-2">Philippines</h5>
-        </div>
+        <a href="/home">
+            <img src="{{ asset('images/CMT-logo.png') }}" alt="CMT Logo" class="brand-image">
+        </a>
+
+        <h5 class="mb-0 ml-2" style="font-size:42px; text-transform:uppercase; font-family:arial;">Philippines</h5>
 
         <ul class="navbar-nav d-flex flex-row align-items-center">
 

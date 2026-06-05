@@ -214,6 +214,11 @@
                 <small>Air Charter</small>
             </a>
 
+            <a href="{{ url('police') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('police') ? 'active' : '' }}">
+                <i class="bi bi-person-badge" style="width: 24px; height: 24px;"></i>
+                <small>Police</small>
+            </a>
+
             <!-- Button 7 -->
             <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
             <img src="{{ asset('images/icon-embassy.png') }}" style="width: 24px; height: 24px;">
@@ -243,11 +248,11 @@
                 <div class="card-header fw-bold"><img src="{{ asset('images/icon-emergency-support.png') }}" style="width: 24px; height: 24px;"> Emergency Support Tools</div>
 
                 <div class="classification">
-                    <!-- Airfield Classification -->
+                    <!-- AIRFIELD CLASSIFICATION -->
                     <div class="classification" style="margin-right: 30px; width: 30%;">
                       <!-- Airport -->
                       <div class="class-column">
-                        <div class="class-header class-airport-category">Airfield Classification</div>
+                        <div class="class-header class-airport-category">AIRFIELD CLASSIFICATION</div>
                         <div class="hospital-list">
                           <div class="hospital-row" style="flex-direction: column;">
                             <!-- Airport row 1 -->
@@ -292,7 +297,7 @@
 
                     <!-- Hospital Classification -->
                     <div class="classification" style="flex-direction: column; width:100%;">
-                      <div class="class-header class-medical-classification">Medical Facility Classification</div>
+                      <div class="class-header class-medical-classification">MEDICAL FACILITY CLASSIFICATION</div>
                       <div class="classification">
                         <!-- Advanced -->
                         <div class="class-column">
@@ -344,6 +349,44 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="class-column" style="margin-left: 50px;">
+                        <div class="class-header class-airport-category">POLICE CLASSIFICATION</div>
+
+                        <div class="airport-list">
+                            <div class="hospital-row" style="flex-direction: column;">
+
+                                <!-- Baris Atas (3) -->
+                                <div class="hospital-item">
+                                    <button class="btn p-1">
+                                        <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:12px; height:12px;">
+                                        <small>National Police (HQ)</small>
+                                    </button>
+
+                                    <button class="btn p-1">
+                                        <img src="{{ asset('images/dot-red.png') }}" style="width:12px; height:12px;">
+                                        <small>Police Regional Office (PRO)</small>
+                                    </button>
+                                </div>
+
+                                <!-- Baris Bawah (2) -->
+                                <div class="hospital-item">
+                                    <button class="btn p-1">
+                                         <img src="{{ asset('images/dot-orange-ppc.png') }}" style="width:12px; height:12px;">
+                                        <small>Provincial Police Office (PPO)</small>
+                                    </button>
+
+                                    <button class="btn p-1">
+                                        <img src="{{ asset('images/dot-green.png') }}" style="width:12px; height:12px;">
+                                        <small>City Police Office (CPO)</small>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                   </div>
 
                 <div class="card-body p-0">
@@ -702,6 +745,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nearbyAirports = @json($nearbyAirports);
     const nearbyHospitals = @json($nearbyHospitals);
+    const nearbyPolices = @json($nearbyPolices);
+    const nearbyEmbassy = @json($nearbyEmbassy);
     let radiusKm = 100;
 
     let map, mainAirportMarker, radiusCircle, routingControl = null;
@@ -710,6 +755,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const DEFAULT_MAIN_AIRPORT_ICON_URL = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png';
     const DEFAULT_HOSPITAL_ICON_URL     = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
     const DEFAULT_AIRPORT_ICON_URL      = 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+    const DEFAULT_POLICE_ICON_URL = 'https://png.pngtree.com/png-vector/20221211/ourmid/pngtree-minimal-location-map-icon-logo-symbol-vector-design-transparent-background-png-image_6520892.png';
+    const DEFAULT_EMBASSY_ICON_URL = '/images/embassy-icon-new.png';
 
     const mainAirportIcon = new L.Icon({
         iconUrl: DEFAULT_MAIN_AIRPORT_ICON_URL,
@@ -785,18 +832,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!airportCategories.some(cat => allowed.includes(cat))) return;
             }
 
+            // Filter police
+           if (type === 'Police' && filters.policeCategories?.length > 0) {
+                const categories = (item.category || '')
+                    .split(',')
+                    .map(c => c.trim().toLowerCase());
+
+                const allowed = filters.policeCategories.map(c => c.toLowerCase());
+
+                if (!categories.some(cat => allowed.includes(cat))) return;
+            }
+
+            const isPolice = type === 'Police';
+
             const icon = L.icon({
                 iconUrl: item.icon || defaultIconUrl,
-                iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -20]
+                iconSize: isPolice ? [12, 12] : [24, 24], // kecilkan police
+                iconAnchor: isPolice ? [15, 30] : [12, 24],
+                popupAnchor: isPolice ? [0, -25] : [0, -20]
             });
 
             const marker = L.marker([item.latitude, item.longitude], { icon });
-            const name = item.name || item.airport_name || 'N/A';
-            const level = item.facility_level || item.category || 'N/A';
+            const name = item.name || item.airport_name || item.name_police || 'N/A';
+            const level = item.facility_level || item.category || item.category || 'N/A';
             const distanceText = `<strong>Distance:</strong> ${distance.toFixed(2)} km`;
-            const detailUrl = (type === 'Airport')
-                ? `/airports/${item.id}/detail`
-                : `/hospitals/${item.id}`;
+
+
+            let detailUrl = '#';
+
+            if (type === 'Airport') {
+                detailUrl = `/airports/${item.id}/detail`;
+            } else if (type === 'Hospital') {
+                detailUrl = `/hospitals/${item.id}`;
+            } else if (type === 'Police') {
+                detailUrl = `/police/${item.id}/detail`;
+            } else if (type === 'Embassy') {
+                detailUrl = `/embassiees/${item.id}/detail`;
+            }
 
             marker.bindPopup(`
                 <div style="font-size:13px;">
@@ -863,9 +935,44 @@ document.addEventListener('DOMContentLoaded', () => {
             addNearbyMarkers(nearbyHospitals, DEFAULT_HOSPITAL_ICON_URL, 'Hospital', filters);
         } else if (filterType === 'airport') {
             addNearbyMarkers(nearbyAirports, DEFAULT_AIRPORT_ICON_URL, 'Airport', filters);
-        } else {
-            addNearbyMarkers(nearbyHospitals, DEFAULT_HOSPITAL_ICON_URL, 'Hospital', filters);
-            addNearbyMarkers(nearbyAirports, DEFAULT_AIRPORT_ICON_URL, 'Airport', filters);
+        } else if (filterType === 'police') {
+            addNearbyMarkers(nearbyPolices, DEFAULT_POLICE_ICON_URL, 'Police', filters);
+        } else if (filterType === 'embassy') {
+            addNearbyMarkers(
+                nearbyEmbassy,
+                DEFAULT_EMBASSY_ICON_URL,
+                'Embassy',
+                filters
+            );
+        }
+        else {
+           addNearbyMarkers(
+                nearbyHospitals,
+                DEFAULT_HOSPITAL_ICON_URL,
+                'Hospital',
+                filters
+            );
+
+            addNearbyMarkers(
+                nearbyAirports,
+                DEFAULT_AIRPORT_ICON_URL,
+                'Airport',
+                filters
+            );
+
+            addNearbyMarkers(
+                nearbyPolices,
+                DEFAULT_POLICE_ICON_URL,
+                'Police',
+                filters
+            );
+
+            addNearbyMarkers(
+                nearbyEmbassy,
+                DEFAULT_EMBASSY_ICON_URL,
+                'Embassy',
+                filters
+            );
         }
 
         fitMapToBounds();
@@ -890,6 +997,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <option value="all">Show All</option>
                     <option value="hospital">Hospitals</option>
                     <option value="airport">Aviations</option>
+                    <option value="police">Police</option>
+                    <option value="embassy">Embassy</option>
                 </select>
 
                 <div id="hospitalFilter" style="display:none;">
@@ -910,6 +1019,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         </label>`).join('')}
                 </div>
 
+                <div id="policeFilter" style="display:none;margin-top:8px;">
+                    <strong>Police Category:</strong><br>
+                    ${[
+                        'National Police (HQ)',
+                        'Police Regional Office (PRO)',
+                        'Provincial Police Office (PPO)',
+                        'City Police Office (CPO)'
+                    ].map(cat => `
+                        <label style="display:block;font-size:13px;">
+                            <input type="checkbox" name="policeCategory" value="${cat}"> ${cat}
+                        </label>
+                    `).join('')}
+                </div>
+
                 <button id="resetFilter" class="btn btn-sm btn-secondary mt-3 w-100">Reset All</button>
             `;
 
@@ -922,12 +1045,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedType = document.querySelector('#mapFilter')?.value || 'all';
         const selectedHospitalLevels = Array.from(document.querySelectorAll('input[name="hospitalLevel"]:checked')).map(el => el.value);
         const selectedAirportClasses = Array.from(document.querySelectorAll('input[name="airportClass"]:checked')).map(el => el.value);
-        updateMarkers(selectedType, selectedHospitalLevels, selectedAirportClasses);
+        const selectedPoliceCategories = Array.from(document.querySelectorAll('input[name="policeCategory"]:checked')).map(el => el.value);
+        updateMarkers(selectedType, selectedHospitalLevels, selectedAirportClasses, selectedPoliceCategories);
     }
 
     initializeMap();
     addMainAirportAndCircle();
-    updateMarkers('all', [], []);
+    updateMarkers('all', [], [], []);
     map.addControl(new FilterRadiusControl());
 
     // === Event Binding ===
@@ -944,9 +1068,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const val = e.target.value;
             document.getElementById('hospitalFilter').style.display = val === 'hospital' ? 'block' : 'none';
             document.getElementById('airportFilter').style.display = val === 'airport' ? 'block' : 'none';
+            document.getElementById('policeFilter').style.display = val === 'police' ? 'block' : 'none';
             refreshFilters();
         }
-        if (e.target.name === 'hospitalLevel' || e.target.name === 'airportClass') {
+        if (e.target.name === 'hospitalLevel' || e.target.name === 'airportClass' || e.target.name === 'policeCategory') {
             refreshFilters();
         }
     });

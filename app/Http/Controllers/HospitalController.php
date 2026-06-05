@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Hospital;
 use App\Models\Airport;
+use App\Models\Police;
+use App\Models\Embassiees;
 use App\Models\Provincesregion;
+use App\Models\City;
+use App\Models\Subcity;
 use Illuminate\Support\Facades\DB;
 
 class HospitalController extends Controller
@@ -142,7 +146,39 @@ class HospitalController extends Controller
         ->orderBy('distance')
         ->get();
 
-        return view('pages.hospital.showdetailemergency', compact('hospital','nearbyHospitals','radius_km','nearbyAirports'));
+        // === NEARBY POLICE ===
+        $nearbyPolices = Police::selectRaw("
+            id, name_police AS name, icon, latitude, longitude, location, telephone, level, classification, category, fax, email, website, hrs_of_operation,
+            ( 6371 * acos(
+                cos( radians(?) )
+                * cos( radians( latitude ) )
+                * cos( radians( longitude ) - radians(?) )
+                + sin( radians(?) )
+                * sin( radians( latitude ) )
+            )) AS distance
+        ", [$latitude, $longitude, $latitude])
+        ->where('police_status', true)
+        ->having('distance', '<=', $radius_km)
+        ->orderBy('distance')
+        ->get();
+
+         // === NEARBY EMBASSY ===
+        $nearbyEmbassy = Embassiees::selectRaw("
+            id, name_embassiees AS name, latitude, longitude, location, telephone, fax, email, website,
+            ( 6371 * acos(
+                cos( radians(?) )
+                * cos( radians( latitude ) )
+                * cos( radians( longitude ) - radians(?) )
+                + sin( radians(?) )
+                * sin( radians( latitude ) )
+            )) AS distance
+        ", [$latitude, $longitude, $latitude])
+        ->where('embassy_status', true)
+        ->having('distance', '<=', $radius_km)
+        ->orderBy('distance')
+        ->get();
+
+        return view('pages.hospital.showdetailemergency', compact('hospital','nearbyHospitals','radius_km','nearbyAirports','nearbyPolices','nearbyEmbassy'));
     }
 
     public function filter(Request $request)

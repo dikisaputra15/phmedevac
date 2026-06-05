@@ -282,7 +282,7 @@
 
                 <!-- Airport -->
                       <div class="class-column" style="margin-right: 100px;">
-                        <div class="class-header class-airport-category">Airfield Classification</div>
+                        <div class="class-header class-airport-category">AIRFIELD CLASSIFICATION</div>
                         <div class="airport-list">
                           <div class="hospital-row" style="flex-direction: column;">
                             <!-- Airport row 1 -->
@@ -328,7 +328,7 @@
                       <div style="flex-direction: column;">
                         <!-- Title -->
                         <div>
-                            <div class="class-header class-medical-classification">Medical Facility Classification</div>
+                            <div class="class-header class-medical-classification">MEDICAL FACILITY CLASSIFICATION</div>
                         </div>
                         <div style="display: flex; flex-direction: row;">
                             <!-- Advanced -->
@@ -383,7 +383,7 @@
                       </div>
 
                        <div class="class-column" style="margin-left: 50px;">
-                        <div class="class-header class-airport-category">Police Classification</div>
+                        <div class="class-header class-airport-category">POLICE CLASSIFICATION</div>
 
                         <div class="airport-list">
                             <div class="hospital-row" style="flex-direction: column;">
@@ -392,7 +392,7 @@
                                 <div class="hospital-item">
                                     <button class="btn p-1">
                                         <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:12px; height:12px;">
-                                        <small>Philippine National Police (National Headquarters)</small>
+                                        <small>National Police (HQ)</small>
                                     </button>
 
                                     <button class="btn p-1">
@@ -410,7 +410,7 @@
 
                                     <button class="btn p-1">
                                         <img src="{{ asset('images/dot-green.png') }}" style="width:12px; height:12px;">
-                                        <small>City Police Station</small>
+                                        <small>City Police Office (CPO)</small>
                                     </button>
                                 </div>
 
@@ -427,7 +427,7 @@
 
                     <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
                         <i class="bi bi-airplane fs-3"></i>
-                        <small>Aviations</small>
+                        <small>Aviation</small>
                     </a>
 
                     <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
@@ -438,6 +438,11 @@
                     <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('hospital') ? 'active' : '' }}">
                     <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
                         <small>Medical</small>
+                    </a>
+
+                    <a href="{{ url('police') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('police') ? 'active' : '' }}">
+                    <i class="bi bi-person-badge" style="width: 24px; height: 24px;"></i>
+                        <small>Police</small>
                     </a>
 
                     <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
@@ -1230,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="form-check">
                         <input class="form-check-input facility-checkbox" type="checkbox" value="airport" id="facilityAirport">
                         <label class="form-check-label" for="facilityAirport">
-                            Aviations (<span id="airportCount">0</span>)
+                            Aviation (<span id="airportCount">0</span>)
                         </label>
                     </div>
 

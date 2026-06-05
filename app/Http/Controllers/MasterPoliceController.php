@@ -72,7 +72,6 @@ class MasterPoliceController extends Controller
         $police->city_id = $request->input('city');
         $police->sub_city = $request->input('district_id');
         $police->name_police = $request->input('name_police');
-        $police->classification = $request->input('classification');
         $police->level = $request->input('level');
         $police->category = $request->input('category');
         $police->location = $request->input('location');
@@ -116,7 +115,6 @@ class MasterPoliceController extends Controller
             'city_id' => $request->input('city'),
             'sub_city' => $request->input('district_id'),
             'name_police' => $request->input('name_police'),
-            'classification' => $request->input('classification'),
             'level' => $request->input('level'),
             'category' => $request->input('category'),
             'location' => $request->input('location'),
