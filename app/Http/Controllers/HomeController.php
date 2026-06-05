@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hospital;
 use App\Models\Airport;
 use App\Models\Embassiees;
+use App\Models\Police;
 use App\Models\Provincesregion;
 use Illuminate\Support\Facades\DB;
 
@@ -16,6 +17,7 @@ class HomeController extends Controller
          $totalhospital = Hospital::count();
          $totalairport = Airport::count();
          $totalembassy = Embassiees::count();
+        $totalPolice = Police::count();
 
         $airportNames = Airport::distinct()->pluck('airport_name')->filter()->sort()->values();
         $airportCategories = Airport::distinct()->pluck('category')->filter()->sort()->values();
@@ -26,6 +28,10 @@ class HomeController extends Controller
         $hospitalLocations = DB::table('hospitals')->distinct()->pluck('address')->filter()->sort()->values();
          $totalhospital = Hospital::count();
 
+        $policeNames = Police::distinct()->pluck('name_police')->filter()->sort()->values();
+
+        $embassyNames = Embassiees::distinct()->pluck('name_embassiees')->filter()->sort()->values();
+
         $provinces = Provincesregion::all();
 
         return view('pages.dashboard',
@@ -33,6 +39,7 @@ class HomeController extends Controller
                 'totalhospital' => $totalhospital,
                 'totalairport' => $totalairport,
                 'totalembassy' => $totalembassy,
+                'totalPolice' => $totalPolice,
                 'airportNames' => $airportNames,
                 'airportCategories' => $airportCategories,
                 'airportLocations' => $airportLocations,
@@ -40,7 +47,9 @@ class HomeController extends Controller
                 'hospitalNames' => $hospitalNames,
                 'hospitalCategories' => $hospitalCategories,
                 'hospitalLocations' => $hospitalLocations,
-                'totalhospital' => $totalhospital
+                'totalhospital' => $totalhospital,
+                'policeNames' => $policeNames,
+                'embassyNames' => $embassyNames
             ]
         );
     }

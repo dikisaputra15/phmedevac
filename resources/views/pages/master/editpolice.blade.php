@@ -27,7 +27,7 @@
                     <?php
                         foreach ($provinces as $prov) {
 
-                            if ($prov->id==$airport->province_id) {
+                            if ($prov->id==$police->province_id) {
                                 $select="selected";
                             }else{
                                 $select="";
@@ -49,7 +49,7 @@
                     <?php
                         foreach ($cities as $city) {
 
-                            if ($city->id==$airport->city_id) {
+                            if ($city->id==$police->city_id) {
                                 $select="selected";
                             }else{
                                 $select="";
@@ -71,7 +71,7 @@
                     <?php
                         foreach ($subcities as $subcity) {
 
-                            if ($subcity->id==$airport->sub_city) {
+                            if ($subcity->id==$police->sub_city) {
                                 $select="selected";
                             }else{
                                 $select="";
