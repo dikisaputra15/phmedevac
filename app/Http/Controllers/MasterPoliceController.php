@@ -94,8 +94,8 @@ class MasterPoliceController extends Controller
     {
         $police = Police::findOrFail($id);
         $provinces = Provincesregion::orderByRaw('LOWER(provinces_region) ASC')->get();
-        $cities = City::orderByRaw('LOWER(city) ASC')->get();
-        $subcities = Subcity::orderByRaw('LOWER(sub_city) ASC')->get();
+        $cities = City::where('province_id', $police->province_id)->orderByRaw('LOWER(city) ASC')->get();
+        $subcities = Subcity::where('city_id', $police->city_id)->orderByRaw('LOWER(sub_city) ASC')->get();
         return view('pages.master.editpolice', [
             'police' => $police,
             'provinces' => $provinces,

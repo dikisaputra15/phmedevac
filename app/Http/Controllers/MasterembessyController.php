@@ -107,8 +107,8 @@ class MasterembessyController extends Controller
     {
         $embassy = Embassiees::findOrFail($id);
         $provinces = Provincesregion::orderByRaw('LOWER(provinces_region) ASC')->get();
-        $cities = City::orderByRaw('LOWER(city) ASC')->get();
-        $subcities = Subcity::orderByRaw('LOWER(sub_city) ASC')->get();
+        $cities = City::where('province_id', $embassy->province_id)->orderByRaw('LOWER(city) ASC')->get();
+        $subcities = Subcity::where('city_id', $embassy->city_id)->orderByRaw('LOWER(sub_city) ASC')->get();
         return view('pages.master.editembassy', [
             'embassy' => $embassy,
             'provinces' => $provinces,

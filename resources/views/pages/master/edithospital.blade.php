@@ -30,7 +30,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label>Edit Region</label>
-                <select class="form-control" name="province_id">
+                <select class="form-control" name="province_id" id="province">
                     <?php
                         foreach ($provinces as $prov) {
 
@@ -1048,7 +1048,7 @@
                 type: 'GET',
                 success: function (data) {
                     $('#city').empty();
-                    $('#city').append('<option value="">-- Choosse City/Regency --</option>');
+                    $('#city').append('<option value="">-- Choosse Province --</option>');
                     $.each(data, function (key, city) {
                         $('#city').append('<option value="' + city.id + '">' + city.city + '</option>');
                     });
@@ -1056,7 +1056,7 @@
             });
         } else {
             $('#city').empty();
-            $('#city').append('<option value="">-- Choosse City/Regency  --</option>');
+            $('#city').append('<option value="">-- Choosse City  --</option>');
         }
     });
 
