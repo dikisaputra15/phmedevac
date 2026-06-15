@@ -445,6 +445,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+
 <script>
 // === Inisialisasi Peta ===
 const map = L.map('map').setView([12.50875613415851, 123.23756608747735], 6);
@@ -569,7 +570,7 @@ function addHospitalMarkers(data) {
 
         const marker = L.marker([h.latitude, h.longitude], { icon }).addTo(hospitalMarkers);
 
-        marker.bindPopup(`
+         marker.bindPopup(`
             <h5 style="border-bottom:1px solid #ccc;">${h.name || 'N/A'}</h5>
             <strong>Global Classification:</strong> ${h.facility_category || 'N/A'}<br>
             <strong>Country Classification:</strong> ${h.facility_level || 'N/A'}<br>
@@ -603,7 +604,10 @@ async function applyHospitalFilters() {
         filters.center_lng = lastClickedLocation.lng;
     }
 
-    const hospitals = await fetchHospitalData(filters);
+    const result = await fetchHospitalData(filters);
+
+    const hospitals = result.hospitals;
+    const levelCounts = result.levelCounts;
 
     const filteredHospitals = hospitals.filter(h => {
         if (levels.length === 0) return true;
@@ -613,7 +617,17 @@ async function applyHospitalFilters() {
     });
 
     addHospitalMarkers(filteredHospitals);
-    document.getElementById('totalCountDisplay').innerHTML = `<strong>Hospitals:</strong> ${filteredHospitals.length}`;
+
+    Object.keys(levelCounts).forEach(level => {
+
+        const id = level.replace(/\s+/g, '-');
+
+        const el = document.getElementById(`count-${id}`);
+
+        if (el) {
+            el.textContent = levelCounts[level];
+        }
+    });
 }
 
 // === Select2 Inisialisasi ===
@@ -662,9 +676,11 @@ const FilterPanel = L.Control.extend({
                 </select>
                 <label>Facility Level:</label>
                 ${['Level 3','Level 2','Level 1','Primary Care Facility'].map(c => `
-                    <label style="display:block;font-size:13px;">
-                        <input type="checkbox" name="hospitalLevel" value="${c}"> ${c}
-                    </label>`).join('')}
+                <label style="display:block;font-size:13px;margin-bottom:4px;">
+                    <input type="checkbox" name="hospitalLevel" value="${c}">
+                    ${c} (<span id="count-${c.replace(/\s+/g,'-')}">0</span>)
+                </label>
+                `).join('')}
                 <hr>
                 <strong>Region</strong>
                 <div style="max-height:120px;overflow-y:auto;border:1px solid #ccc;padding:5px;border-radius:5px;margin-top:6px;">
@@ -677,7 +693,6 @@ const FilterPanel = L.Control.extend({
                 </div>
                 <hr>
                 <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">Reset All</button>
-                <div id="totalCountDisplay" style="margin-top:8px;text-align:center;font-size:13px;"></div>
             </div>`;
         L.DomEvent.disableClickPropagation(div);
         return div;

@@ -161,7 +161,33 @@ class AirportsController extends Controller
 
         // Execute the query and return JSON response
         $airports = $query->get();
-        return response()->json($airports);
+        $categoryCounts = [
+            'International' => 0,
+            'Domestic' => 0,
+            'Military' => 0,
+            'Regional' => 0,
+            'Private' => 0,
+        ];
+
+        foreach ($airports as $airport) {
+
+            if (!$airport->category) {
+                continue;
+            }
+
+            $categories = array_map('trim', explode(',', $airport->category));
+
+            foreach ($categories as $cat) {
+                if (isset($categoryCounts[$cat])) {
+                    $categoryCounts[$cat]++;
+                }
+            }
+        }
+
+        return response()->json([
+            'airports' => $airports,
+            'categoryCounts' => $categoryCounts
+        ]);
     }
 
     // Unchanged methods for other functionalities

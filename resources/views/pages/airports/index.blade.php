@@ -322,6 +322,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.6.0/Control.FullScreen.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 
 <script>
 // === Inisialisasi Peta ===
@@ -422,19 +423,18 @@ map.on('click', e => {
 // === Fetch Data Airport ===
 async function fetchAirportData(filters = {}) {
     const params = new URLSearchParams();
-    Object.entries(filters).forEach(([k, v]) => {
-        if (Array.isArray(v)) v.forEach(x => params.append(`${k}[]`, x));
-        else if (v !== '' && v != null) params.append(k, v);
-    });
-    if (drawnPolygonGeoJSON) params.append('polygon', JSON.stringify(drawnPolygonGeoJSON));
 
-    try {
-        const res = await fetch(`/api/airports?${params.toString()}`);
-        return res.ok ? await res.json() : [];
-    } catch (e) {
-        console.error('Error fetching airport data:', e);
-        return [];
-    }
+    Object.entries(filters).forEach(([k, v]) => {
+        if (Array.isArray(v)) {
+            v.forEach(x => params.append(`${k}[]`, x));
+        } else if (v !== '' && v != null) {
+            params.append(k, v);
+        }
+    });
+
+    const res = await fetch(`/api/airports?${params.toString()}`);
+
+    return await res.json();
 }
 
 // === Tambah Marker Airport ===
@@ -490,17 +490,74 @@ async function applyAirportFilters() {
         filters.center_lng = lastClickedLocation.lng;
     }
 
-    const airports = await fetchAirportData(filters);
+    const result = await fetchAirportData(filters);
+
+    const airports = result.airports;
+    const categoryCounts = result.categoryCounts;
 
     const filteredAirports = airports.filter(a => {
-        if (aClasses.length === 0) return true;
-        if (!a.category) return false;
-        const dbCategories = a.category.split(',').map(c => c.trim().toLowerCase());
-        return aClasses.some(sel => dbCategories.includes(sel.toLowerCase()));
+
+        // =========================
+        // FILTER CATEGORY
+        // =========================
+        let categoryMatch = true;
+
+        if (aClasses.length > 0) {
+            if (!a.category) return false;
+
+            const dbCategories = a.category
+                .split(',')
+                .map(c => c.trim().toLowerCase());
+
+            categoryMatch = aClasses.some(sel =>
+                dbCategories.includes(sel.toLowerCase())
+            );
+        }
+
+        if (!categoryMatch) return false;
+
+        // =========================
+        // FILTER POLYGON
+        // =========================
+        if (drawnPolygonGeoJSON) {
+
+            const point = turf.point([
+                parseFloat(a.longitude),
+                parseFloat(a.latitude)
+            ]);
+
+            const inside = turf.booleanPointInPolygon(
+                point,
+                drawnPolygonGeoJSON
+            );
+
+            if (!inside) return false;
+        }
+
+        return true;
     });
 
     addAirportMarkers(filteredAirports);
-    document.getElementById('totalCountDisplay').innerHTML = `<strong>Airports:</strong> ${filteredAirports.length}`;
+
+    const localCounts = {};
+
+    filteredAirports.forEach(a => {
+        if (!a.category) return;
+
+        a.category.split(',').forEach(cat => {
+            cat = cat.trim();
+
+            localCounts[cat] = (localCounts[cat] || 0) + 1;
+        });
+    });
+
+    Object.keys(categoryCounts).forEach(cat => {
+    const badge = document.getElementById(`count-${cat}`);
+
+    if (badge) {
+        badge.textContent = categoryCounts[cat];
+    }
+});
 }
 
 // === Select2 Inisialisasi ===
@@ -550,9 +607,11 @@ const FilterPanel = L.Control.extend({
                 </select>
                 <label>Airport Category:</label>
                 ${['International','Domestic','Military','Regional','Private'].map(c => `
-                    <label style="display:block;font-size:13px;">
-                        <input type="checkbox" name="airportClass" value="${c}"> ${c}
-                    </label>`).join('')}
+                <label style="display:block;font-size:13px;margin-bottom:5px;">
+                    <input type="checkbox" name="airportClass" value="${c}">
+                    ${c} (<span id="count-${c}">0</span>)
+                </label>
+                `).join('')}
                 <hr>
                 <strong>Region</strong>
                 <div style="max-height:120px;overflow-y:auto;border:1px solid #ccc;padding:5px;border-radius:5px;margin-top:6px;">
@@ -565,7 +624,6 @@ const FilterPanel = L.Control.extend({
                 </div>
                 <hr>
                 <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">Reset All</button>
-                <div id="totalCountDisplay" style="margin-top:8px;text-align:center;font-size:13px;"></div>
             </div>`;
         L.DomEvent.disableClickPropagation(div);
         return div;

@@ -831,11 +831,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (selected.length === 0) {
                 provinceSearch.value = '';
-                provinceSearch.placeholder = '🔍 Select Region / State';
+                provinceSearch.placeholder = '🔍 Select Region';
             } else if (selected.length <= 2) {
                 provinceSearch.value = selected.join(', ');
             } else {
-                provinceSearch.value = selected.length + ' Region / State Selected';
+                provinceSearch.value = selected.length + ' Region Selected';
             }
         }
     });
@@ -1107,31 +1107,51 @@ document.addEventListener('DOMContentLoaded', function () {
         const showEmbassy =
             showAllFacilities || facilities.includes('embassy');
 
-        // === HOSPITALS ===
+         // === HOSPITALS ===
         if (showHospital) {
-            const hospitals = await fetchData('/api/hospital', {
+             const result = await fetchData('/api/hospital', {
                 ...common,
                 name: hospitalName,
                 category: hospitalLevels
             });
-            addMarkers(hospitals, hospitalMarkers, null);
-            totalHospitals = hospitals.length;
+
+            addMarkers(result.hospitals, hospitalMarkers, null);
+
+            totalHospitals = result.hospitals.length;
         } else {
             hospitalMarkers.clearLayers();
         }
 
         // === AIRPORTS ===
-        if (showAirport) {
-            const airports = await fetchData('/api/airports', {
+       if (showAirport) {
+
+            const airportResponse = await fetchData('/api/airports', {
                 ...common,
                 name: airportName
             });
 
+            const airports = Array.isArray(airportResponse)
+                    ? airportResponse
+                    : airportResponse.airports || [];
+            const categoryCounts = airportResponse.categoryCounts || {};
+
             const filteredAirports = airports.filter(a => {
-                if (airportClasses.length === 0) return true;
-                if (!a.category) return false;
-                const dbCategories = a.category.split(',').map(c => c.trim().toLowerCase());
-                return airportClasses.some(sel => dbCategories.includes(sel.toLowerCase()));
+
+                if (airportClasses.length === 0) {
+                    return true;
+                }
+
+                if (!a.category) {
+                    return false;
+                }
+
+                const dbCategories = a.category
+                    .split(',')
+                    .map(c => c.trim().toLowerCase());
+
+                return airportClasses.some(sel =>
+                    dbCategories.includes(sel.toLowerCase())
+                );
             });
 
             addMarkers(
@@ -1139,17 +1159,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 airportMarkers,
                 'https://pg.concordreview.com/wp-content/uploads/2024/10/International-Airport.png'
             );
+
             totalAirports = filteredAirports.length;
-        } else {
+        }else {
             airportMarkers.clearLayers();
         }
 
         // === POLICE ===
-        if (showPolice) {
+       if (showPolice) {
 
-            const police = await fetchData('/api/polices', {
+            const result = await fetchData('/api/polices', {
                 ...common
             });
+
+            const police = result.polices || [];
+            const categoryCounts = result.categoryCounts || {};
 
             addMarkers(
                 police,
@@ -1159,6 +1183,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
             totalPolice = police.length;
 
+            Object.keys(categoryCounts).forEach(cat => {
+
+                const id = cat.replace(/[^a-zA-Z0-9]/g, '-');
+
+                const el = document.getElementById(`count-${id}`);
+
+                if (el) {
+                    el.textContent = categoryCounts[cat];
+                }
+            });
         } else {
             policeMarkers.clearLayers();
         }
@@ -1256,14 +1290,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     <hr>
                     <div class="filter-box" id="provinceSelect">
                         <label class="filter-label">
-                            Region / State
+                            Region
                         </label>
 
                         <div class="select-input">
                             <input
                                 type="text"
                                 id="provinceSearch"
-                                placeholder="🔍 Select Region / State"
+                                placeholder="🔍 Select Region"
                                 readonly
                             >
                             <i class="bi bi-chevron-down"></i>
