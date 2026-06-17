@@ -420,6 +420,9 @@ async function applyPoliceFilters() {
 
     addPoliceMarkers(polices);
 
+    document.getElementById('totalCountDisplay').innerHTML =
+        `<strong>Police:</strong> ${polices.length}`;
+
     Object.keys(categoryCounts).forEach(cat => {
 
         const id = cat.replace(/[^a-zA-Z0-9]/g,'-');
@@ -565,6 +568,10 @@ const FilterPanel = L.Control.extend({
                 <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">
                     Reset All
                 </button>
+
+                <div id="totalCountDisplay"
+                    style="margin-top:8px;text-align:center;font-size:13px;">
+                </div>
 
             </div>
         `;

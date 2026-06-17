@@ -617,6 +617,7 @@ async function applyHospitalFilters() {
     });
 
     addHospitalMarkers(filteredHospitals);
+    document.getElementById('totalCountDisplay').innerHTML = `<strong>Hospitals:</strong> ${filteredHospitals.length}`;
 
     Object.keys(levelCounts).forEach(level => {
 
@@ -693,6 +694,7 @@ const FilterPanel = L.Control.extend({
                 </div>
                 <hr>
                 <button id="resetMapFilter" class="btn btn-sm btn-secondary w-100">Reset All</button>
+                <div id="totalCountDisplay" style="margin-top:8px;text-align:center;font-size:13px;"></div>
             </div>`;
         L.DomEvent.disableClickPropagation(div);
         return div;
