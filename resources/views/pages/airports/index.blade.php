@@ -457,7 +457,7 @@ function addAirportMarkers(data) {
                 ${airport.address || 'N/A'}
                 ${airport.sub_city ? ', ' + airport.sub_city : ''}
                 ${airport.city ? ', ' + airport.city : ''}
-                ${airport.province_name ? ', ' + airport.province_name : ''}, Philippines<br>
+                ${airport.provinces_region ? ', ' + airport.provinces_region : ''}, Philippines<br>
             <strong>Telephone:</strong> ${airport.telephone || 'N/A'}<br>
             <strong>Website:</strong> ${airport.website || 'N/A'} <br>
             ${airport.id ? `<a href="/airports/${airport.id}/detail" class="btn btn-primary btn-sm mt-2" style="color:white;">Read More</a>` : ''}
