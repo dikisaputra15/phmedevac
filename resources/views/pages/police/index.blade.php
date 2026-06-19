@@ -360,8 +360,8 @@ function addPoliceMarkers(data) {
         const icon = L.icon({
             iconUrl: police.icon ? police.icon : 'https://png.pngtree.com/png-vector/20221211/ourmid/pngtree-minimal-location-map-icon-logo-symbol-vector-design-transparent-background-png-image_6520892.png',
             iconSize: [12, 12],
-            iconAnchor: [15, 30],
-            popupAnchor: [0, -25]
+            iconAnchor: [6, 6],
+            popupAnchor: [0, -6]
         });
 
         const marker = L.marker(
