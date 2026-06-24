@@ -518,9 +518,9 @@
             <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="_blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
         </p>
 
-        <h6 class="fw-bold">
-                <b>Philippines Government Health Insurance</b>
-            </h6>
+        <h5 class="modal-header fw-bold" style="padding:10px 0;">
+            Philippines Government Health Insurance
+        </h5>
             <p class="text-justify">
                 Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
             </p>
@@ -738,9 +738,9 @@
                 <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
             </p>
 
-            <h6 class="fw-bold">
-                <b>Philippines Government Health Insurance</b>
-            </h6>
+            <h5 class="modal-header fw-bold" style="padding:10px 0;">
+            Philippines Government Health Insurance
+        </h5>
             <p class="text-justify">
                 Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
             </p>
@@ -957,9 +957,9 @@
             <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
         </p>
 
-        <h6 class="fw-bold">
-            <b>Philippines Government Health Insurance</b>
-        </h6>
+        <h5 class="modal-header fw-bold" style="padding:10px 0;">
+            Philippines Government Health Insurance
+        </h5>
         <p class="text-justify">
             Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
         </p>
@@ -1178,9 +1178,9 @@
             <b>Note:</b> : This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
         </p>
 
-        <h6 class="fw-bold">
-            <b>Philippines Government Health Insurance</b>
-        </h6>
+        <h5 class="modal-header fw-bold" style="padding:10px 0;">
+            Philippines Government Health Insurance
+        </h5>
         <p class="text-justify">
             Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
         </p>
