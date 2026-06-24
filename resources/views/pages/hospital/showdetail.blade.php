@@ -154,10 +154,6 @@
       object-fit: contain;
     }
 
-    #level11Modal .modal-body {
-            max-height: 50vh;
-            overflow-y: auto;
-        }
 </style>
 
 @endpush
@@ -381,21 +377,24 @@
 </div>
 
 <div class="modal fade" id="level11Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width:800px;">
+<div class="modal-dialog modal-dialog-centered" style="max-width:800px;">
     <div class="modal-content">
       <div class="modal-header">
          <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-tosca.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Primary Care Facility (PCF)</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Primary Care Medical Facilities (Public and Private)</h5>
          </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="p-modal text-justify">
+        <h6 class="fw-bold">
+            <b>Overview</b>
+        </h6>
+        <p class="text-justify">
             <b>Primary Care Facility</b> – a first-contact healthcare facility that offers basic services including emergency services and provision for normal deliveries, subdivided into:
         </p>
 
-        <ol class="p-modal text-justify" type="a">
+        <ol class="text-justify" type="a">
             <li>
                 <b>With in-patient beds</b> – a short stay facility where patients can be admitted for a short period of 1 to 3 days, this includes infirmary, dispensary, and birthing home.
             </li>
@@ -445,46 +444,199 @@
                 </ol>
             </li>
         </ol>
-
+        <h6 class="fw-bold">
+            <b>Role</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>First-contact point for basic healthcare needs</li>
+                <li>Provide basic medical, dental, emergency, maternal, newborn, and outpatient services</li>
+                <li>Manage simple and uncomplicated cases</li>
+                <li>Provide short-stay care when licensed with inpatient beds</li>
+                <li>Refer patients to hospitals or specialized facilities when higher-level care is required</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Clinical Services</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>
+                    <strong>Bed Capacity</strong>
+                    <ul>
+                        <li>With inpatient beds: short-stay admission, usually around 1-3 days</li>
+                        <li>Without beds: no patient confinement</li>
+                        <li>Actual capacity depends on the facility's DOH license</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Core Specialties</strong>
+                    <ul>
+                        <li>General medical care</li>
+                        <li>Basic emergency care</li>
+                        <li>Maternal and newborn care, where applicable</li>
+                        <li>Dental care, where applicable</li>
+                        <li>Health counseling and preventive care</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Intermediate Services</strong>
+                    <ul>
+                        <li>With inpatient beds</li>
+                        <li>Infirmary</li>
+                        <li>Dispensary</li>
+                        <li>Birthing home</li>
+                        <li>Without beds</li>
+                        <li>Medical outpatient clinic</li>
+                        <li>OFW or seafarer clinic</li>
+                        <li>Dental clinic</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Surgical & Procedural Capacity</strong>
+                    <ul>
+                        <li>Minor procedures only, depending on license and staff capability</li>
+                        <li>Simple surgical procedures may be available in infirmaries</li>
+                        <li>Normal spontaneous delivery may be available in birth homes</li>
+                        <li>Complex surgery, ICU care, high-risk pregnancy care, and advanced diagnostics require referral</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Diagnostic & Support Infrastructure</strong>
+                    <ul>
+                        <li>Basic consultation and treatment areas</li>
+                        <li>Emergency equipment appropriate to facility type</li>
+                        <li>Medicine dispensing or pharmacy-related services, where authorized</li>
+                        <li>Birthing room and newborn care equipment for birthing homes</li>
+                        <li>Dental equipment for dental clinics</li>
+                        <li>Referral system to hospitals and diagnostic facilities</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
         <p class="p-modal text-justify">
             <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="_blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
         </p>
 
-        </div>
-        </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="level2Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <div class="d-flex align-items-center">
-                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-orange.png" style="width:30px; height:30px;">
-                <h5 class="modal-title" id="disclaimerLabel">Class 2</h5>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p><b>Community Health Post - Health Sub Center (CHP)</b></p>
-            <p class="p-modal">Primary health, ambulatory care, and short stay inpatient and maternity care at the local rural / remote community level, with a minimum of six (6) health workers to ensure safe 24-hour care and treatment.</p>
-        </div>
-        </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="level3Modal" tabindex="-1" aria-labelledby="disclaimerLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <div class="d-flex align-items-center">
-                <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-green.png" style="width:30px; height:30px;">
-                <h5 class="modal-title" id="disclaimerLabel">Class D — Sub-district Hospital</h5>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <p class="p-modal">Provides basic inpatient and emergency care with general practitioners and limited specialist support. Mainly located in sub-districts serving as the first referral point before higher-level hospitals.</p>
+        <h6 class="fw-bold">
+                <b>Philippines Government Health Insurance</b>
+            </h6>
+            <p class="text-justify">
+                Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
+            </p>
+            <p class="text-justify">
+                PhilHealth is designed to reduce the financial burden of medical care by paying part of eligible healthcare costs through accredited public and private health facilities. It does not directly operate hospitals or clinics. Instead, it finances approved benefit packages for qualified members and their dependents.
+            </p>
+            <p class="text-justify">
+                Under the Universal Health Care framework, all Philippine citizens are covered under the National Health Insurance Program. Coverage is organized through two broad membership groups: Direct Contributors and Indirect Contributors.
+            </p>
+            <h6 class="fw-bold">
+                <b>Key Facts</b>
+            </h6>
+            <p class="text-justify">
+                <ul>
+                    <li>Official program name: National Health Insurance Program</li>
+                    <li>Implementing agency: Philippine Health Insurance Corporation</li>
+                    <li>Common name: PhilHealth</li>
+                    <li>Coverage model: National social health insurance</li>
+                    <li>Provider network: Accredited public and private health facilities</li>
+                    <li>Main payment method: Case rates and approved benefit packages</li>
+                    <li>Main member categories: Direct Contributors and Indirect Contributors</li>
+                    <li>Direct Contributors: Members who pay premiums through salary deduction, employer remittance, or direct payment</li>
+                    <li>Indirect Contributors: Members whose premiums are subsidized by the government</li>
+                    <li>Employee payment model: Contributions are generally deducted from salary and remitted through the employer</li>
+                    <li>Self-paying payment model: Contributions may be paid directly through authorized PhilHealth payment channels</li>
+                    <li>Free registration: Registration itself is free</li>
+                    <li>Free coverage: Available only for qualified government-subsidized groups</li>
+                    <li>Foreign eligibility: Eligible foreign residents, workers, and retirees may enroll if they meet PhilHealth requirements</li>
+                    <li>Tourist coverage: Foreign tourists are generally not automatically covered</li>
+                    <li>Patient billing: PhilHealth reduces eligible bills but may not cover the full cost of treatment</li>
+                </ul>
+            </p>
+            <h6 class="fw-bold">
+                <b>Legal and Institutional Background</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth operates under the National Health Insurance Program established by the National Health Insurance Act. The program was created to provide health insurance coverage and improve access to affordable healthcare services in the Philippines.
+            </p>
+            <p class="text-justify">
+                The Universal Health Care Act further expanded the national health insurance framework by placing all Philippine citizens under PhilHealth coverage. The law reorganized membership into Direct Contributors and Indirect Contributors.
+            </p>
+            <p class="text-justify">
+                Direct Contributors are members with the capacity to pay premiums. This group includes employed individuals, self-employed workers, professionals, migrant workers, overseas Filipino workers, household workers, and other paying members.
+            </p>
+            <p class="text-justify">
+                Indirect Contributors are members whose premiums are paid through government subsidy. This group includes qualified indigent members, senior citizens, persons with disabilities, sponsored members, and other government-identified subsidized groups.
+            </p>
+            <p class="text-justify">
+                PhilHealth is a government-owned and controlled corporation attached to the national health system. Its main responsibilities include member registration, premium collection, provider accreditation, benefit administration, claims processing, and payment to accredited healthcare facilities.
+            </p>
+            <h6 class="fw-bold">
+                <b>Coverage and Benefits</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth coverage applies only when the patient receives care from a PhilHealth-accredited or contracted healthcare provider and meets the applicable eligibility requirements.
+            </p>
+            <p class="text-justify">
+            Coverage may include the following benefit areas:
+            </p>
+            <p class="text-justify">
+                <ul>
+                    <li>Inpatient hospital care</li>
+                    <li>Selected outpatient care</li>
+                    <li>Primary care services</li>
+                    <li>Emergency care covered under approved packages</li>
+                    <li>Maternity care</li>
+                    <li>Newborn care</li>
+                    <li>Dialysis</li>
+                    <li>Ambulatory surgery</li>
+                    <li>TB-DOTS services</li>
+                    <li>Animal bite treatment packages</li>
+                    <li>Mental health services under approved arrangements</li>
+                    <li>Cancer and other specialty benefit packages</li>
+                    <li>Selected high-cost or catastrophic care packages</li>
+                </ul>
+            </p>
+            <p class="text-justify">
+            PhilHealth commonly pays benefits through fixed case rates. The case-rate amount is deducted from the member’s total bill before discharge or final billing. The amount may cover hospital charges, professional fees, or other approved components depending on the applicable benefit package.
+            </p>
+            <p class="text-justify">
+            PhilHealth does not always pay the full medical bill. Patients may still have remaining out-of-pocket expenses, depending on the diagnosis, procedure, hospital type, accommodation level, medicines, supplies, professional fees, and package limits.
+            </p>
+            <p class="text-justify">
+                For qualified members in eligible settings, the No Balance Billing policy may remove additional charges beyond the PhilHealth benefit package. This usually applies to specific subsidized member groups and eligible services in government health facilities.
+            </p>
+            <h6 class="fw-bold">
+                <b>Implementation and Challenges</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth improves access to healthcare financing, but the system still faces operational and access-related challenges.
+            </p>
+            <p class="text-justify">
+                <ul>
+                    <li>PhilHealth benefit payments are often based on fixed case rates. When the actual cost of care is higher than the case-rate amount, patients may still pay the remaining balance.</li>
+                    <li>Access depends on provider's accreditation. A member may only use PhilHealth benefits in a health facility that is accredited or contracted for the relevant service.</li>
+                    <li>Service availability differs across regions. Large urban hospitals may offer more specialized PhilHealth-covered services, while remote or underserved areas may have fewer accredited providers and limited specialist capacity.</li>
+                    <li>Members must maintain accurate membership records and meet documentation requirements. Delays or errors in eligibility verification may affect benefit processing.</li>
+                    <li>Direct Contributors must remain compliant with premium payment rules. Employees depend on proper employer remittance, while self-paying members must pay through approved channels.</li>
+                    <li>Foreign nationals must meet specific enrollment requirements. Legal residence, work status, retirement visa status, and immigration documents affect eligibility.</li>
+                </ul>
+            </p>
+            <h6 class="fw-bold">
+                <b>Current Role</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth remains the central public health insurance mechanism in the Philippines. It is the main government instrument for reducing the cost of hospital care, primary care, maternity care, dialysis, selected outpatient services, and approved specialty packages.
+            </p>
+            <p class="text-justify">
+                PhilHealth supports the wider Universal Health Care agenda by expanding financial protection, organizing members into contributor categories, accrediting healthcare providers, and paying approved benefits through public and private facilities.
+            </p>
+            <p class="text-justify">
+                The system is not a fully free healthcare model. It combines government subsidy for qualified groups with premium-based contributions from workers, employers, self-employed individuals, professionals, voluntary members, and eligible foreign residents.
+            </p>
+            <p class="text-justify">
+            For practical use, a member should confirm active PhilHealth membership, seek care from an accredited provider, present the required PhilHealth information, complete the facility's benefit process, and verify the amount deducted from the final bill.
+            </p>
         </div>
         </div>
     </div>
@@ -496,19 +648,214 @@
         <div class="modal-header">
             <div class="d-flex align-items-center">
                 <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-purple.png" style="width:30px; height:30px;">
-                <h5 class="modal-title" id="disclaimerLabel">Level 1</h5>
+                <h5 class="modal-title" id="disclaimerLabel">Level 1 Medical Facilities (Public and Private)</h5>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p class="p-modal text-justify">
-                Level 1 hospitals in the Philippines provide core specialist care in internal medicine, surgery, obstetrics, and pediatrics in the Philippines under Department of Health (DOH) licensing standards. These hospitals manage common and uncomplicated medical conditions and provide first-line inpatient facilities and services, with defined referral pathways for complex cases to higher-level hospitals. Level 1 hospitals operate with a bed capacity of up to 50 beds.
+            <h6 class="fw-bold">
+                <b>Overview</b>
+            </h6>
+            <p class="text-justify">
+               Level 1 hospitals are basic general hospitals licensed under the Philippine Department of Health (DOH) hospital classification framework. They provide essential hospital services for common and uncomplicated medical, surgical, maternity, pediatric, and emergency cases. They are the first hospital-level referral point above primary care facilities.
             </p>
-            <p class="p-modal text-justify">
-                These facilities are equipped with basic but essential clinical and support services, including isolation facilities, maternity services, dental clinics, pharmacy services, and blood stations. Diagnostic capabilities include first-level diagnostic imaging (X-ray) and secondary-level clinical laboratory services with a consulting pathologist, ensuring safe and standardized primary hospital care.
+            <p class="text-justify">
+                <b>Note:</b> The Philippine DOH medical facility classification applies to both public and private hospitals and health facilities. Classification is determined by licensed service capability, infrastructure, staffing, diagnostics, and authorized bed capacity, not by whether the facility is government-owned or privately owned.
+            </p>
+            <h6 class="fw-bold">
+                <b>Role</b>
+            </h6>
+            <p class="text-justify">
+                <ul>
+                    <li>Provide first-line hospital care for common and uncomplicated cases</li>
+                    <li>Manage basic medical, surgical, pediatric, obstetric, and emergency conditions</li>
+                    <li>Serve as referral hospitals for primary care facilities, infirmaries, birthing homes, and outpatient clinics</li>
+                    <li>Stabilize patients before referral to Level 2 or Level 3 hospitals when advanced care is required</li>
+                    <li>Support basic inpatient care, infection control, patient records, and facility reporting</li>
+                </ul>
+            </p>
+            <h6 class="fw-bold">
+                <b>Clinical Services</b>
+            </h6>
+            <p class="text-justify">
+                <ul>
+                    <li>
+                        <strong>Bed Capacity</strong>
+                        <ul>
+                            <li>Approximately 25-75 beds</li>
+                            <li>Actual capacity depends on the hospital's DOH-authorized bed capacity under its License to Operate</li>
+                        </ul>
+                    </li>
+                    <li class="mt-2">
+                        <strong>Core Specialties</strong>
+                        <ul>
+                            <li>Internal Medicine / General Medicine</li>
+                            <li>Pediatrics</li>
+                            <li>Obstetrics & Gynecology</li>
+                            <li>Surgery</li>
+                            <li>Family Medicine / General Practice, where applicable</li>
+                        </ul>
+                    </li>
+                    <li class="mt-2">
+                        <strong>Intermediate Services</strong>
+                        <ul>
+                            <li>Emergency services</li>
+                            <li>Outpatient services</li>
+                            <li>Inpatient nursing care</li>
+                            <li>Maternity facilities</li>
+                            <li>Isolation facilities for infectious and communicable diseases</li>
+                            <li>Dental section or dental clinic</li>
+                            <li>Pharmacy services</li>
+                            <li>Blood station provision or access</li>
+                        </ul>
+                    </li>
+                    <li class="mt-2">
+                        <strong>Surgical & Procedural Capacity</strong>
+                        <ul>
+                            <li>Operating room with standard equipment</li>
+                            <li>Sterilization capacity for equipment and supplies</li>
+                            <li>Post-operative recovery room</li>
+                            <li>Basic surgical and maternity procedures within licensed capability</li>
+                            <li>Referral of complex surgery, ICU-level care, high-risk pregnancy, and subspecialty cases to higher-level hospitals</li>
+                        </ul>
+                    </li>
+                    <li class="mt-2">
+                        <strong>Diagnostic & Support Infrastructure</strong>
+                        <ul>
+                            <li>DOH-licensed secondary clinical laboratory</li>
+                            <li>Consulting pathologist support</li>
+                            <li>DOH-licensed Level 1 imaging facility</li>
+                            <li>X-ray services with consulting radiologist support</li>
+                            <li>Pharmacy</li>
+                            <li>Dental clinic</li>
+                            <li>Blood station provision</li>
+                            <li>Infection-control and isolation facilities</li>
+                        </ul>
+                    </li>
+                </ul>
             </p>
             <p class="p-modal text-justify">
                 <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+            </p>
+
+            <h6 class="fw-bold">
+                <b>Philippines Government Health Insurance</b>
+            </h6>
+            <p class="text-justify">
+                Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
+            </p>
+            <p class="text-justify">
+                PhilHealth is designed to reduce the financial burden of medical care by paying part of eligible healthcare costs through accredited public and private health facilities. It does not directly operate hospitals or clinics. Instead, it finances approved benefit packages for qualified members and their dependents.
+            </p>
+            <p class="text-justify">
+                Under the Universal Health Care framework, all Philippine citizens are covered under the National Health Insurance Program. Coverage is organized through two broad membership groups: Direct Contributors and Indirect Contributors.
+            </p>
+            <h6 class="fw-bold">
+                <b>Key Facts</b>
+            </h6>
+            <p class="text-justify">
+                <ul>
+                    <li>Official program name: National Health Insurance Program</li>
+                    <li>Implementing agency: Philippine Health Insurance Corporation</li>
+                    <li>Common name: PhilHealth</li>
+                    <li>Coverage model: National social health insurance</li>
+                    <li>Provider network: Accredited public and private health facilities</li>
+                    <li>Main payment method: Case rates and approved benefit packages</li>
+                    <li>Main member categories: Direct Contributors and Indirect Contributors</li>
+                    <li>Direct Contributors: Members who pay premiums through salary deduction, employer remittance, or direct payment</li>
+                    <li>Indirect Contributors: Members whose premiums are subsidized by the government</li>
+                    <li>Employee payment model: Contributions are generally deducted from salary and remitted through the employer</li>
+                    <li>Self-paying payment model: Contributions may be paid directly through authorized PhilHealth payment channels</li>
+                    <li>Free registration: Registration itself is free</li>
+                    <li>Free coverage: Available only for qualified government-subsidized groups</li>
+                    <li>Foreign eligibility: Eligible foreign residents, workers, and retirees may enroll if they meet PhilHealth requirements</li>
+                    <li>Tourist coverage: Foreign tourists are generally not automatically covered</li>
+                    <li>Patient billing: PhilHealth reduces eligible bills but may not cover the full cost of treatment</li>
+                </ul>
+            </p>
+            <h6 class="fw-bold">
+                <b>Legal and Institutional Background</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth operates under the National Health Insurance Program established by the National Health Insurance Act. The program was created to provide health insurance coverage and improve access to affordable healthcare services in the Philippines.
+            </p>
+            <p class="text-justify">
+                The Universal Health Care Act further expanded the national health insurance framework by placing all Philippine citizens under PhilHealth coverage. The law reorganized membership into Direct Contributors and Indirect Contributors.
+            </p>
+            <p class="text-justify">
+                Direct Contributors are members with the capacity to pay premiums. This group includes employed individuals, self-employed workers, professionals, migrant workers, overseas Filipino workers, household workers, and other paying members.
+            </p>
+            <p class="text-justify">
+                Indirect Contributors are members whose premiums are paid through government subsidy. This group includes qualified indigent members, senior citizens, persons with disabilities, sponsored members, and other government-identified subsidized groups.
+            </p>
+            <p class="text-justify">
+                PhilHealth is a government-owned and controlled corporation attached to the national health system. Its main responsibilities include member registration, premium collection, provider accreditation, benefit administration, claims processing, and payment to accredited healthcare facilities.
+            </p>
+            <h6 class="fw-bold">
+                <b>Coverage and Benefits</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth coverage applies only when the patient receives care from a PhilHealth-accredited or contracted healthcare provider and meets the applicable eligibility requirements.
+            </p>
+            <p class="text-justify">
+            Coverage may include the following benefit areas:
+            </p>
+            <p class="text-justify">
+                <ul>
+                    <li>Inpatient hospital care</li>
+                    <li>Selected outpatient care</li>
+                    <li>Primary care services</li>
+                    <li>Emergency care covered under approved packages</li>
+                    <li>Maternity care</li>
+                    <li>Newborn care</li>
+                    <li>Dialysis</li>
+                    <li>Ambulatory surgery</li>
+                    <li>TB-DOTS services</li>
+                    <li>Animal bite treatment packages</li>
+                    <li>Mental health services under approved arrangements</li>
+                    <li>Cancer and other specialty benefit packages</li>
+                    <li>Selected high-cost or catastrophic care packages</li>
+                </ul>
+            </p>
+            <p class="text-justify">
+            PhilHealth commonly pays benefits through fixed case rates. The case-rate amount is deducted from the member’s total bill before discharge or final billing. The amount may cover hospital charges, professional fees, or other approved components depending on the applicable benefit package.
+            </p>
+            <p class="text-justify">
+            PhilHealth does not always pay the full medical bill. Patients may still have remaining out-of-pocket expenses, depending on the diagnosis, procedure, hospital type, accommodation level, medicines, supplies, professional fees, and package limits.
+            </p>
+            <p class="text-justify">
+                For qualified members in eligible settings, the No Balance Billing policy may remove additional charges beyond the PhilHealth benefit package. This usually applies to specific subsidized member groups and eligible services in government health facilities.
+            </p>
+            <h6 class="fw-bold">
+                <b>Implementation and Challenges</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth improves access to healthcare financing, but the system still faces operational and access-related challenges.
+            </p>
+            <p class="text-justify">
+                <ul>
+                    <li>PhilHealth benefit payments are often based on fixed case rates. When the actual cost of care is higher than the case-rate amount, patients may still pay the remaining balance.</li>
+                    <li>Access depends on provider's accreditation. A member may only use PhilHealth benefits in a health facility that is accredited or contracted for the relevant service.</li>
+                    <li>Service availability differs across regions. Large urban hospitals may offer more specialized PhilHealth-covered services, while remote or underserved areas may have fewer accredited providers and limited specialist capacity.</li>
+                    <li>Members must maintain accurate membership records and meet documentation requirements. Delays or errors in eligibility verification may affect benefit processing.</li>
+                    <li>Direct Contributors must remain compliant with premium payment rules. Employees depend on proper employer remittance, while self-paying members must pay through approved channels.</li>
+                    <li>Foreign nationals must meet specific enrollment requirements. Legal residence, work status, retirement visa status, and immigration documents affect eligibility.</li>
+                </ul>
+            </p>
+            <h6 class="fw-bold">
+                <b>Current Role</b>
+            </h6>
+            <p class="text-justify">
+                PhilHealth remains the central public health insurance mechanism in the Philippines. It is the main government instrument for reducing the cost of hospital care, primary care, maternity care, dialysis, selected outpatient services, and approved specialty packages.
+            </p>
+            <p class="text-justify">
+                PhilHealth supports the wider Universal Health Care agenda by expanding financial protection, organizing members into contributor categories, accrediting healthcare providers, and paying approved benefits through public and private facilities.
+            </p>
+            <p class="text-justify">
+                The system is not a fully free healthcare model. It combines government subsidy for qualified groups with premium-based contributions from workers, employers, self-employed individuals, professionals, voluntary members, and eligible foreign residents.
+            </p>
+            <p class="text-justify">
+            For practical use, a member should confirm active PhilHealth membership, seek care from an accredited provider, present the required PhilHealth information, complete the facility's benefit process, and verify the amount deducted from the final bill.
             </p>
       </div>
     </div>
@@ -521,19 +868,213 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital_pin-blue.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 2</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Level 2 Medical Facilities (Public and Private)</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="p-modal text-justify">
-           Level 2 hospitals provide broad specialist services with limited subspecialist capability, which function as regional referral centers in the Philippines under Department of Health (DOH) licensing standards. They are equipped to manage moderately complex medical and surgical cases and operate with a bed capacity of up to 100 beds, supported by core inpatient and procedural infrastructure.
+        <h6 class="fw-bold">
+            <b>Overview</b>
+        </h6>
+        <p class="text-justify">
+            Level 2 hospitals provide all Level 1 services plus departmentalized clinical services, broader specialist capacity, intensive care, neonatal intensive care, high-risk pregnancy care, respiratory therapy, and more advanced diagnostic services. They function as secondary referral hospitals for moderately complex cases.
         </p>
-        <p class="p-modal text-justify">
-            These facilities maintain departmentalized clinical services and essential critical care units, including respiratory units, Intensive Care Units (ICU), Neonatal Intensive Care Units (NICU), and High-Risk Pregnancy Units (HRPU). Diagnostic and treatment capabilities include operating theaters, clinical laboratory services, and second-level diagnostic imaging (X-ray), enabling comprehensive secondary-level hospital care.
+        <p class="text-justify">
+            <b>Note:</b> The Philippine DOH medical facility classification applies to both public and private hospitals and health facilities. Classification is determined by licensed service capability, infrastructure, staffing, diagnostics, and authorized bed capacity, not by whether the facility is government-owned or privately owned.
+        </p>
+        <h6 class="fw-bold">
+            <b>Role</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>Secondary referral hospitals for Level 1 hospitals and primary care facilities</li>
+                <li>Manage moderate to complex medical, surgical, pediatric, obstetric, and emergency cases</li>
+                <li>Provide departmentalized clinical services led by qualified clinical department heads</li>
+                <li>Provide ICU, NICU, high-risk pregnancy, and respiratory therapy services</li>
+                <li>Stabilize and refer highly complex or tertiary-level cases to Level 3 hospitals</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Clinical Services</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>
+                    <strong>Bed Capacity</strong>
+                    <ul>
+                        <li>Approximately 100-200 beds</li>
+                        <li>Actual capacity depends on the hospital's DOH-authorized bed capacity under its License to Operate</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Core Specialties</strong>
+                    <ul>
+                        <li>Internal Medicine</li>
+                        <li>Pediatrics</li>
+                        <li>Obstetrics & Gynecology</li>
+                        <li>Surgery</li>
+                        <li>Related specialties and ancillary services</li>
+                        <li>Departmentalized clinical services</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Intermediate Services</strong>
+                    <ul>
+                        <li>All Level 1 services</li>
+                        <li>General Intensive Care Unit</li>
+                        <li>Neonatal Intensive Care Unit</li>
+                        <li>High-Risk Pregnancy Unit</li>
+                        <li>Respiratory Therapy Unit</li>
+                        <li>Expanded emergency care</li>
+                        <li>Expanded inpatient and outpatient services</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Surgical & Procedural Capacity</strong>
+                    <ul>
+                        <li>Broader surgical services than Level 1 hospitals</li>
+                        <li>Operating room and post-operative recovery capacity</li>
+                        <li>Surgical care supported by ICU, NICU, HRPU, respiratory therapy, and tertiary laboratory services</li>
+                        <li>Referral of highly specialized, interventional, or tertiary surgical cases to Level 3 hospitals</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Diagnostic & Support Infrastructure</strong>
+                    <ul>
+                        <li>DOH-licensed tertiary clinical laboratory</li>
+                        <li>DOH-licensed Level 2 imaging facility</li>
+                        <li>Mobile X-ray capability inside the institution</li>
+                        <li>Capability for contrast examinations</li>
+                        <li>Pharmacy</li>
+                        <li>Blood station provision</li>
+                        <li>Respiratory therapy support</li>
+                        <li>ICU, NICU, and HRPU infrastructure</li>
+                    </ul>
+                </li>
+            </ul>
         </p>
         <p class="p-modal text-justify">
             <b>Note:</b> This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+        </p>
+
+        <h6 class="fw-bold">
+            <b>Philippines Government Health Insurance</b>
+        </h6>
+        <p class="text-justify">
+            Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
+        </p>
+        <p class="text-justify">
+            PhilHealth is designed to reduce the financial burden of medical care by paying part of eligible healthcare costs through accredited public and private health facilities. It does not directly operate hospitals or clinics. Instead, it finances approved benefit packages for qualified members and their dependents.
+        </p>
+        <p class="text-justify">
+            Under the Universal Health Care framework, all Philippine citizens are covered under the National Health Insurance Program. Coverage is organized through two broad membership groups: Direct Contributors and Indirect Contributors.
+        </p>
+        <h6 class="fw-bold">
+            <b>Key Facts</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>Official program name: National Health Insurance Program</li>
+                <li>Implementing agency: Philippine Health Insurance Corporation</li>
+                <li>Common name: PhilHealth</li>
+                <li>Coverage model: National social health insurance</li>
+                <li>Provider network: Accredited public and private health facilities</li>
+                <li>Main payment method: Case rates and approved benefit packages</li>
+                <li>Main member categories: Direct Contributors and Indirect Contributors</li>
+                <li>Direct Contributors: Members who pay premiums through salary deduction, employer remittance, or direct payment</li>
+                <li>Indirect Contributors: Members whose premiums are subsidized by the government</li>
+                <li>Employee payment model: Contributions are generally deducted from salary and remitted through the employer</li>
+                <li>Self-paying payment model: Contributions may be paid directly through authorized PhilHealth payment channels</li>
+                <li>Free registration: Registration itself is free</li>
+                <li>Free coverage: Available only for qualified government-subsidized groups</li>
+                <li>Foreign eligibility: Eligible foreign residents, workers, and retirees may enroll if they meet PhilHealth requirements</li>
+                <li>Tourist coverage: Foreign tourists are generally not automatically covered</li>
+                <li>Patient billing: PhilHealth reduces eligible bills but may not cover the full cost of treatment</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Legal and Institutional Background</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth operates under the National Health Insurance Program established by the National Health Insurance Act. The program was created to provide health insurance coverage and improve access to affordable healthcare services in the Philippines.
+        </p>
+        <p class="text-justify">
+            The Universal Health Care Act further expanded the national health insurance framework by placing all Philippine citizens under PhilHealth coverage. The law reorganized membership into Direct Contributors and Indirect Contributors.
+        </p>
+        <p class="text-justify">
+            Direct Contributors are members with the capacity to pay premiums. This group includes employed individuals, self-employed workers, professionals, migrant workers, overseas Filipino workers, household workers, and other paying members.
+        </p>
+        <p class="text-justify">
+            Indirect Contributors are members whose premiums are paid through government subsidy. This group includes qualified indigent members, senior citizens, persons with disabilities, sponsored members, and other government-identified subsidized groups.
+        </p>
+        <p class="text-justify">
+            PhilHealth is a government-owned and controlled corporation attached to the national health system. Its main responsibilities include member registration, premium collection, provider accreditation, benefit administration, claims processing, and payment to accredited healthcare facilities.
+        </p>
+        <h6 class="fw-bold">
+            <b>Coverage and Benefits</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth coverage applies only when the patient receives care from a PhilHealth-accredited or contracted healthcare provider and meets the applicable eligibility requirements.
+        </p>
+        <p class="text-justify">
+           Coverage may include the following benefit areas:
+        </p>
+        <p class="text-justify">
+            <ul>
+                <li>Inpatient hospital care</li>
+                <li>Selected outpatient care</li>
+                <li>Primary care services</li>
+                <li>Emergency care covered under approved packages</li>
+                <li>Maternity care</li>
+                <li>Newborn care</li>
+                <li>Dialysis</li>
+                <li>Ambulatory surgery</li>
+                <li>TB-DOTS services</li>
+                <li>Animal bite treatment packages</li>
+                <li>Mental health services under approved arrangements</li>
+                <li>Cancer and other specialty benefit packages</li>
+                <li>Selected high-cost or catastrophic care packages</li>
+            </ul>
+        </p>
+        <p class="text-justify">
+           PhilHealth commonly pays benefits through fixed case rates. The case-rate amount is deducted from the member’s total bill before discharge or final billing. The amount may cover hospital charges, professional fees, or other approved components depending on the applicable benefit package.
+        </p>
+        <p class="text-justify">
+           PhilHealth does not always pay the full medical bill. Patients may still have remaining out-of-pocket expenses, depending on the diagnosis, procedure, hospital type, accommodation level, medicines, supplies, professional fees, and package limits.
+        </p>
+        <p class="text-justify">
+            For qualified members in eligible settings, the No Balance Billing policy may remove additional charges beyond the PhilHealth benefit package. This usually applies to specific subsidized member groups and eligible services in government health facilities.
+        </p>
+        <h6 class="fw-bold">
+            <b>Implementation and Challenges</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth improves access to healthcare financing, but the system still faces operational and access-related challenges.
+        </p>
+        <p class="text-justify">
+            <ul>
+                <li>PhilHealth benefit payments are often based on fixed case rates. When the actual cost of care is higher than the case-rate amount, patients may still pay the remaining balance.</li>
+                <li>Access depends on provider's accreditation. A member may only use PhilHealth benefits in a health facility that is accredited or contracted for the relevant service.</li>
+                <li>Service availability differs across regions. Large urban hospitals may offer more specialized PhilHealth-covered services, while remote or underserved areas may have fewer accredited providers and limited specialist capacity.</li>
+                <li>Members must maintain accurate membership records and meet documentation requirements. Delays or errors in eligibility verification may affect benefit processing.</li>
+                <li>Direct Contributors must remain compliant with premium payment rules. Employees depend on proper employer remittance, while self-paying members must pay through approved channels.</li>
+                <li>Foreign nationals must meet specific enrollment requirements. Legal residence, work status, retirement visa status, and immigration documents affect eligibility.</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Current Role</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth remains the central public health insurance mechanism in the Philippines. It is the main government instrument for reducing the cost of hospital care, primary care, maternity care, dialysis, selected outpatient services, and approved specialty packages.
+        </p>
+        <p class="text-justify">
+            PhilHealth supports the wider Universal Health Care agenda by expanding financial protection, organizing members into contributor categories, accrediting healthcare providers, and paying approved benefits through public and private facilities.
+        </p>
+        <p class="text-justify">
+            The system is not a fully free healthcare model. It combines government subsidy for qualified groups with premium-based contributions from workers, employers, self-employed individuals, professionals, voluntary members, and eligible foreign residents.
+        </p>
+        <p class="text-justify">
+           For practical use, a member should confirm active PhilHealth membership, seek care from an accredited provider, present the required PhilHealth information, complete the facility's benefit process, and verify the amount deducted from the final bill.
         </p>
       </div>
     </div>
@@ -546,19 +1087,215 @@
       <div class="modal-header">
         <div class="d-flex align-items-center">
             <img src="https://pg.concordreview.com/wp-content/uploads/2025/01/hospital-pin-red.png" style="width:30px; height:30px;">
-            <h5 class="modal-title" id="disclaimerLabel">Level 3</h5>
+            <h5 class="modal-title" id="disclaimerLabel">Level 3 Medical Facilities (Public and Private)</h5>
         </div>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="p-modal text-justify">
-            Level 3 hospitals are the highest-tier medical facility in the Philippines under the Department of Health (DOH) licensing standards. Level 3 facilities provide comprehensive specialist and subspecialist services supported by advanced medical technology, tertiary diagnostic capabilities, and full referral-level clinical functions. These hospitals manage complex and severe medical cases and operate with a bed capacity exceeding 500 beds, consistent with requirements for tertiary hospital classification.
+        <h6 class="fw-bold">
+            <b>Overview</b>
+        </h6>
+        <p class="text-justify">
+            Level 3 hospitals are the highest tier medical facility in the Philippines registered under the Department of Health (DOH) licensing standards. Level 3 facilities provide comprehensive specialist and subspecialist services supported by advanced medical technology, tertiary diagnostic capabilities, and full referral-level clinical functions. These hospitals manage complex and severe medical cases and operate with a bed capacity exceeding 500 beds, consistent with requirements for tertiary hospital classification.
         </p>
-        <p class="p-modal text-justify">
-            In addition to full clinical services, Level 3 hospitals function as teaching, training, and research institutions. Their mandated service capabilities include physical medicine and rehabilitation, ambulatory surgery, dialysis services, tertiary-level laboratory facilities, blood banking capacity, and third-level diagnostic imaging (X-ray).
+        <p class="text-justify">
+            <b>Note:</b> : The Philippine DOH medical facility classification applies to both public and private hospitals and health facilities. Classification is determined by licensed service capability, infrastructure, staffing, diagnostics, and authorized bed capacity, not by whether the facility is government or privately owned.
+        </p>
+        <h6 class="fw-bold">
+            <b>Role</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>Tertiary referral hospitals for complex and severe cases</li>
+                <li>Manage advanced medical, surgical, obstetric, pediatric, emergency, and subspecialty cases</li>
+                <li>Provide training and teaching functions through accredited residency programs</li>
+                <li>Support advanced diagnostics, critical care, rehabilitation, dialysis, blood banking, and interventional services</li>
+                <li>Receive referrals from Level 1 and Level 2 hospitals, specialty facilities, primary care facilities, and other health providers</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Clinical Services</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>
+                    <strong>Bed Capacity</strong>
+                    <ul>
+                        <li>Approximately 200-500+ beds</li>
+                        <li>Standard staffing references commonly use 200, 300, 400, and 500 beds</li>
+                        <li>Larger Level 3 government hospitals may exceed 500 beds depending on authorized capacity and separate approval or upgrading laws</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Core Specialties</strong>
+                    <ul>
+                        <li>Internal Medicine / General Medicine</li>
+                        <li>Pediatrics</li>
+                        <li>Obstetrics & Gynecology</li>
+                        <li>Surgery</li>
+                        <li>Family Medicine / General Practice, where applicable</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Intermediate Services</strong>
+                    <ul>
+                        <li>Emergency services</li>
+                        <li>Outpatient services</li>
+                        <li>Inpatient nursing services</li>
+                        <li>Maternity services, including delivery room and maternity ward facilities</li>
+                        <li>Isolation facilities for infectious and communicable disease control</li>
+                        <li>Dental section or dental clinic</li>
+                        <li>Pharmacy services</li>
+                        <li>Blood station provision or access</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Surgical & Procedural Capacity</strong>
+                    <ul>
+                        <li>Operating room with standard equipment</li>
+                        <li>Sterilization capacity for equipment and supplies</li>
+                        <li>Post-operative recovery room</li>
+                        <li>Basic surgical and maternity procedures within the hospital's licensed capability</li>
+                        <li>Referral of complex surgical, critical care, high-risk obstetric, and subspecialty cases to higher-level hospitals</li>
+                    </ul>
+                </li>
+                <li class="mt-2">
+                    <strong>Diagnostic & Support Infrastructure</strong>
+                    <ul>
+                        <li>DOH-licensed secondary clinical laboratory</li>
+                        <li>Consulting pathologist support</li>
+                        <li>DOH-licensed Level 1 imaging facility</li>
+                        <li>X-ray services with consulting radiologist support</li>
+                        <li>Pharmacy</li>
+                        <li>Dental clinic</li>
+                        <li>Blood station provision</li>
+                        <li>Infection control and isolation facilities</li>
+                    </ul>
+                </li>
+            </ul>
         </p>
         <p class="p-modal text-justify">
             <b>Note:</b> : This classification and service scope is aligned with the Philippine DOH hospital licensing and classification framework pursuant to the Hospital Licensure Act. <a href="{{ asset('files/ao-2012-0012.pdf') }}" target="__blank">Philippines Hospital and other medical facilities Classification (AO 2012-0012)</a>
+        </p>
+
+        <h6 class="fw-bold">
+            <b>Philippines Government Health Insurance</b>
+        </h6>
+        <p class="text-justify">
+            Government public health insurance system in the Philippines is administered by the Philippine Health Insurance Corporation, commonly known as PhilHealth. PhilHealth manages the National Health Insurance Program, the country’s national social health insurance scheme.
+        </p>
+        <p class="text-justify">
+            PhilHealth is designed to reduce the financial burden of medical care by paying part of eligible healthcare costs through accredited public and private health facilities. It does not directly operate hospitals or clinics. Instead, it finances approved benefit packages for qualified members and their dependents.
+        </p>
+        <p class="text-justify">
+            Under the Universal Health Care framework, all Philippine citizens are covered under the National Health Insurance Program. Coverage is organized through two broad membership groups: Direct Contributors and Indirect Contributors.
+        </p>
+        <h6 class="fw-bold">
+            <b>Key Facts</b>
+        </h6>
+        <p class="text-justify">
+            <ul>
+                <li>Official program name: National Health Insurance Program</li>
+                <li>Implementing agency: Philippine Health Insurance Corporation</li>
+                <li>Common name: PhilHealth</li>
+                <li>Coverage model: National social health insurance</li>
+                <li>Provider network: Accredited public and private health facilities</li>
+                <li>Main payment method: Case rates and approved benefit packages</li>
+                <li>Main member categories: Direct Contributors and Indirect Contributors</li>
+                <li>Direct Contributors: Members who pay premiums through salary deduction, employer remittance, or direct payment</li>
+                <li>Indirect Contributors: Members whose premiums are subsidized by the government</li>
+                <li>Employee payment model: Contributions are generally deducted from salary and remitted through the employer</li>
+                <li>Self-paying payment model: Contributions may be paid directly through authorized PhilHealth payment channels</li>
+                <li>Free registration: Registration itself is free</li>
+                <li>Free coverage: Available only for qualified government-subsidized groups</li>
+                <li>Foreign eligibility: Eligible foreign residents, workers, and retirees may enroll if they meet PhilHealth requirements</li>
+                <li>Tourist coverage: Foreign tourists are generally not automatically covered</li>
+                <li>Patient billing: PhilHealth reduces eligible bills but may not cover the full cost of treatment</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Legal and Institutional Background</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth operates under the National Health Insurance Program established by the National Health Insurance Act. The program was created to provide health insurance coverage and improve access to affordable healthcare services in the Philippines.
+        </p>
+        <p class="text-justify">
+            The Universal Health Care Act further expanded the national health insurance framework by placing all Philippine citizens under PhilHealth coverage. The law reorganized membership into Direct Contributors and Indirect Contributors.
+        </p>
+        <p class="text-justify">
+            Direct Contributors are members with the capacity to pay premiums. This group includes employed individuals, self-employed workers, professionals, migrant workers, overseas Filipino workers, household workers, and other paying members.
+        </p>
+        <p class="text-justify">
+            Indirect Contributors are members whose premiums are paid through government subsidy. This group includes qualified indigent members, senior citizens, persons with disabilities, sponsored members, and other government-identified subsidized groups.
+        </p>
+        <p class="text-justify">
+            PhilHealth is a government-owned and controlled corporation attached to the national health system. Its main responsibilities include member registration, premium collection, provider accreditation, benefit administration, claims processing, and payment to accredited healthcare facilities.
+        </p>
+        <h6 class="fw-bold">
+            <b>Coverage and Benefits</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth coverage applies only when the patient receives care from a PhilHealth-accredited or contracted healthcare provider and meets the applicable eligibility requirements.
+        </p>
+        <p class="text-justify">
+           Coverage may include the following benefit areas:
+        </p>
+        <p class="text-justify">
+            <ul>
+                <li>Inpatient hospital care</li>
+                <li>Selected outpatient care</li>
+                <li>Primary care services</li>
+                <li>Emergency care covered under approved packages</li>
+                <li>Maternity care</li>
+                <li>Newborn care</li>
+                <li>Dialysis</li>
+                <li>Ambulatory surgery</li>
+                <li>TB-DOTS services</li>
+                <li>Animal bite treatment packages</li>
+                <li>Mental health services under approved arrangements</li>
+                <li>Cancer and other specialty benefit packages</li>
+                <li>Selected high-cost or catastrophic care packages</li>
+            </ul>
+        </p>
+        <p class="text-justify">
+           PhilHealth commonly pays benefits through fixed case rates. The case-rate amount is deducted from the member’s total bill before discharge or final billing. The amount may cover hospital charges, professional fees, or other approved components depending on the applicable benefit package.
+        </p>
+        <p class="text-justify">
+           PhilHealth does not always pay the full medical bill. Patients may still have remaining out-of-pocket expenses, depending on the diagnosis, procedure, hospital type, accommodation level, medicines, supplies, professional fees, and package limits.
+        </p>
+        <p class="text-justify">
+            For qualified members in eligible settings, the No Balance Billing policy may remove additional charges beyond the PhilHealth benefit package. This usually applies to specific subsidized member groups and eligible services in government health facilities.
+        </p>
+        <h6 class="fw-bold">
+            <b>Implementation and Challenges</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth improves access to healthcare financing, but the system still faces operational and access-related challenges.
+        </p>
+        <p class="text-justify">
+            <ul>
+                <li>PhilHealth benefit payments are often based on fixed case rates. When the actual cost of care is higher than the case-rate amount, patients may still pay the remaining balance.</li>
+                <li>Access depends on provider's accreditation. A member may only use PhilHealth benefits in a health facility that is accredited or contracted for the relevant service.</li>
+                <li>Service availability differs across regions. Large urban hospitals may offer more specialized PhilHealth-covered services, while remote or underserved areas may have fewer accredited providers and limited specialist capacity.</li>
+                <li>Members must maintain accurate membership records and meet documentation requirements. Delays or errors in eligibility verification may affect benefit processing.</li>
+                <li>Direct Contributors must remain compliant with premium payment rules. Employees depend on proper employer remittance, while self-paying members must pay through approved channels.</li>
+                <li>Foreign nationals must meet specific enrollment requirements. Legal residence, work status, retirement visa status, and immigration documents affect eligibility.</li>
+            </ul>
+        </p>
+        <h6 class="fw-bold">
+            <b>Current Role</b>
+        </h6>
+        <p class="text-justify">
+            PhilHealth remains the central public health insurance mechanism in the Philippines. It is the main government instrument for reducing the cost of hospital care, primary care, maternity care, dialysis, selected outpatient services, and approved specialty packages.
+        </p>
+        <p class="text-justify">
+            PhilHealth supports the wider Universal Health Care agenda by expanding financial protection, organizing members into contributor categories, accrediting healthcare providers, and paying approved benefits through public and private facilities.
+        </p>
+        <p class="text-justify">
+            The system is not a fully free healthcare model. It combines government subsidy for qualified groups with premium-based contributions from workers, employers, self-employed individuals, professionals, voluntary members, and eligible foreign residents.
+        </p>
+        <p class="text-justify">
+           For practical use, a member should confirm active PhilHealth membership, seek care from an accredited provider, present the required PhilHealth information, complete the facility's benefit process, and verify the amount deducted from the final bill.
         </p>
       </div>
     </div>
