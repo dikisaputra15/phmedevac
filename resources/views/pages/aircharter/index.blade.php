@@ -97,20 +97,21 @@
         </div>
 
         <div class="d-flex gap-2 ms-auto">
-             <!-- Button 5 -->
-            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3">
-                <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
-                <small>Medical</small>
-            </a>
 
             <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3">
                 <i class="bi bi-airplane fs-3"></i>
-                <small>Airports</small>
+                <small>Aviation</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
                   <img src="{{ asset('images/icon-air-charter.png') }}" style="width: 48px; height: 24px;">
                 <small>Air Charter</small>
+            </a>
+
+             <!-- Button 5 -->
+            <a href="{{ url('hospital') }}" class="btn btn-danger d-flex flex-column align-items-center p-3">
+                <img src="{{ asset('images/icon-medical.png') }}" style="width: 24px; height: 24px;">
+                <small>Medical</small>
             </a>
 
             <a href="{{ url('police') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('police') ? 'active' : '' }}">

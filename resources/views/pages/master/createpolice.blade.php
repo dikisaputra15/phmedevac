@@ -102,26 +102,26 @@
 
                 <input type="hidden" name="icon" id="icon">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="National Police (HQ)" data-icon="{{ asset('images/dot-blue-ring-royal-papua.png') }}">
-                    <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" style="width:12px; height:12px;">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="National Police (HQ)" data-icon="{{ asset('images/Layer1.png') }}">
+                    <img src="{{ asset('images/Layer1.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">National Police (HQ)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Police Regional Office (PRO)" data-icon="{{ asset('images/dot-red.png') }}">
-                    <img src="{{ asset('images/dot-red.png') }}" style="width:12px; height:12px;">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="Police Regional Office (PRO)" data-icon="{{ asset('images/Layer2.png') }}">
+                    <img src="{{ asset('images/Layer2.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">Police Regional Office (PRO)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="Provincial Police Office (PPO)" data-icon="{{ asset('images/dot-orange-ppc.png') }}">
-                    <img src="{{ asset('images/dot-orange-ppc.png') }}" style="width:12px; height:12px;">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="Provincial Police Office (PPO)" data-icon="{{ asset('images/Layer3.png') }}">
+                    <img src="{{ asset('images/Layer3.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">Provincial Police Office (PPO)</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input category-radio" type="radio" name="category" value="City Police Office (CPO)" data-icon="{{ asset('images/dot-green.png') }}">
-                    <img src="{{ asset('images/dot-green.png') }}" style="width:12px; height:12px;">
+                    <input class="form-check-input category-radio" type="radio" name="category" value="City Police Office (CPO)" data-icon="{{ asset('images/Layer4.png') }}">
+                    <img src="{{ asset('images/Layer4.png') }}" style="width:12px; height:12px;">
                     <label class="form-check-label">City Police Office (CPO)</label>
                 </div>
             </div>
@@ -217,6 +217,42 @@
           </div>
         </div>
 
+         <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Nearest Airfields, Medical Facilities, Police, and Embassies
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote6" name="nearest_medical_facility">
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Accommodation Search
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote7" name="nearest_accommodation">
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
@@ -232,6 +268,8 @@
     $('#summernote3').summernote()
     $('#summernote4').summernote()
     $('#summernote5').summernote()
+    $('#summernote6').summernote()
+    $('#summernote7').summernote()
 
   })
 </script>

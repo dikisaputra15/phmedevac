@@ -147,9 +147,9 @@
                         type="radio"
                         name="category"
                         value="National Police (HQ)"
-                        data-icon="{{ asset('images/dot-blue-ring-royal-papua.png') }}"
+                        data-icon="{{ asset('images/Layer1.png') }}"
                         {{ $police->category == 'National Police (HQ)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/dot-blue-ring-royal-papua.png') }}" width="16">
+                    <img src="{{ asset('images/Layer1.png') }}" width="16">
                     <label>National Police (HQ)</label>
                 </div>
 
@@ -158,9 +158,9 @@
                         type="radio"
                         name="category"
                         value="Police Regional Office (PRO)"
-                        data-icon="{{ asset('images/dot-red.png') }}"
+                        data-icon="{{ asset('images/Layer2.png') }}"
                         {{ $police->category == 'Police Regional Office (PRO)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/dot-red.png') }}" width="16">
+                    <img src="{{ asset('images/Layer2.png') }}" width="16">
                     <label>Police Regional Office (PRO)</label>
                 </div>
 
@@ -169,9 +169,9 @@
                         type="radio"
                         name="category"
                         value="Provincial Police Office (PPO)"
-                        data-icon="{{ asset('images/dot-orange-ppc.png') }}"
+                        data-icon="{{ asset('images/Layer3.png') }}"
                         {{ $police->category == 'Provincial Police Office (PPO)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/dot-orange-ppc.png') }}" width="16">
+                    <img src="{{ asset('images/Layer3.png') }}" width="16">
                     <label>Provincial Police Office (PPO)</label>
                 </div>
 
@@ -180,9 +180,9 @@
                         type="radio"
                         name="category"
                         value="City Police Office (CPO)"
-                        data-icon="{{ asset('images/dot-green.png') }}"
+                        data-icon="{{ asset('images/Layer4.png') }}"
                         {{ $police->category == 'City Police Office (CPO)' ? 'checked' : '' }}>
-                    <img src="{{ asset('images/dot-green.png') }}" width="16">
+                    <img src="{{ asset('images/Layer4.png') }}" width="16">
                     <label>City Police Office (CPO)</label>
                 </div>
 
@@ -284,6 +284,44 @@
           </div>
         </div>
 
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Edit Nearest Airfields, Medical Facilities, Police, and Embassies
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote6" name="nearest_medical_facility">
+                    <?php echo $police->nearest_medical_facility; ?>
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
+         <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title">
+                Edit Accommodation Search
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <textarea id="summernote7" name="nearest_accommodation">
+                    <?php echo $police->nearest_accommodation; ?>
+                </textarea>
+
+            </div>
+
+          </div>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
@@ -299,6 +337,8 @@
     $('#summernote3').summernote()
     $('#summernote4').summernote()
     $('#summernote5').summernote()
+    $('#summernote6').summernote()
+    $('#summernote7').summernote()
 
   })
 </script>

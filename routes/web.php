@@ -96,7 +96,7 @@ Route::middleware(['web', 'jwt.login'])->group(function () {
         Route::post('/airportdata/{id}/toggle-status', [MasterairportController::class, 'toggleStatus'])->name('airportdata.toggleStatus');
         Route::post('/hospitaldata/{id}/toggle-status', [MasterhospitalController::class, 'toggleStatus'])->name('hospitaldata.toggleStatus');
         Route::post('/embassydata/{id}/toggle-status', [MasterembessyController::class, 'toggleStatus'])->name('embassydata.toggleStatus');
-         Route::post('/policedata/{id}/toggle-status', [MasterPoliceController::class, 'toggleStatus'])->name('policedata.toggleStatus');
+        Route::post('/policedata/{id}/toggle-status', [MasterPoliceController::class, 'toggleStatus'])->name('policedata.toggleStatus');
 
         // === FITUR APP ===
         Route::resource('hospital', HospitalController::class);
@@ -106,6 +106,7 @@ Route::middleware(['web', 'jwt.login'])->group(function () {
 
         Route::resource('embassiees', EmbassieesController::class);
         Route::get('/embassiees/{id}/detail', [EmbassieesController::class, 'showdetail']);
+        Route::get('/embassiees/{id}/emergency', [EmbassieesController::class, 'showdetailemergency']);
 
         Route::resource('airports', AirportsController::class);
         Route::get('/airports/{id}/detail', [AirportsController::class, 'showdetail']);
@@ -117,6 +118,7 @@ Route::middleware(['web', 'jwt.login'])->group(function () {
 
         Route::resource('police', PoliceController::class);
         Route::get('/police/{id}/detail', [PoliceController::class, 'showdetail']);
+        Route::get('/police/{id}/emergency', [PoliceController::class, 'showdetailemergency']);
 
         // === API FILTER ===
         Route::get('/api/airports', [AirportsController::class, 'filter']);

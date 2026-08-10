@@ -80,16 +80,21 @@
         </div>
 
         <div class="d-flex gap-2 ms-auto">
+
+            <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('home') ? 'active' : '' }}">
+                <i class="bi bi-house-door-fill fs-3"></i>
+                <small>Home</small>
+            </a>
+
             <!-- Button 2 -->
             <a href="{{ url('embassiees') }}/{{$embassy->id}}/detail" class="btn btn-outline-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees/'.$embassy->id.'/detail') ? 'active' : '' }}">
                 <img src="{{ asset('images/icon-menu-general-info.png') }}" style="width: 18px; height: 24px;">
                 <small>General</small>
             </a>
 
-            <!-- Button 5 -->
-            <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
-                <i class="bi bi-airplane fs-3"></i>
-                <small>Aviation</small>
+            <a href="{{ url('embassiees') }}/{{$embassy->id}}/emergency" class="btn btn-outline-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees/'.$embassy->id.'/emergency') ? 'active' : '' }}">
+                <img src="{{ asset('images/icon-emergency-support-white.png') }}" style="width: 24px; height: 24px;">
+                <small>Emergency</small>
             </a>
 
             <a href="{{ url('aircharter') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('aircharter') ? 'active' : '' }}">
@@ -103,15 +108,18 @@
                 <small>Medical</small>
             </a>
 
+            <!-- Button 5 -->
+            <a href="{{ url('airports') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('airports') ? 'active' : '' }}">
+                <i class="bi bi-airplane fs-3"></i>
+                <small>Aviation</small>
+            </a>
+
+
             <a href="{{ url('police') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('police') ? 'active' : '' }}">
                 <i class="bi bi-person-badge" style="width: 24px; height: 24px;"></i>
                 <small>Police</small>
             </a>
 
-            <a href="{{ url('embassiees') }}" class="btn btn-danger d-flex flex-column align-items-center p-3 {{ request()->is('embassiees') ? 'active' : '' }}">
-            <img src="{{ asset('images/icon-embassy.png') }}" style="width: 24px; height: 24px;">
-                <small>Embassies</small>
-            </a>
         </div>
     </div>
 
@@ -131,39 +139,48 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header fw-bold"><i class="fas fa-phone"></i> Contact Information</div>
-                <div class="card-body">
+                <div class="card-header fw-bold"><img src="{{ asset('images/icon-location.png') }}" style="width: 18px; height: 24px;"> Location</div>
+                <div class="card-body overflow-auto">
                     <p>
-                        <strong>Telephone:</strong> {!! $embassy->telephone ?? '-' !!}
+                        <strong>Address:</strong>
+                        {{ $embassy->location ?? '-' }},
+                        {{ $subcity->sub_city ?? '-' }},
+                        {{ $city->city ?? '-' }},
+                        {{ $province->provinces_region ?? '-' }}, Philippines
                     </p>
                     <p>
-                        <strong>Fax:</strong> {!! $embassy->fax ?? '-' !!}
-                    </p>
-                        <strong>Email:</strong> {!! $embassy->email ?? '-' !!}
+                        <strong>Latitude:</strong> {{ $embassy->latitude }}
                     </p>
                     <p>
-                        <strong>Website:</strong> {!! $embassy->website !!}
-                    </p>
-                    <p>
-                        <strong>Latitude:</strong> {{ $embassy->latitude ?? '-' }}
-                    </p>
-                    <p>
-                        <strong>Longitude:</strong> {{ $embassy->longitude ?? '-' }}
-                    </p>
-                    <p>
-                        <strong>Location:</strong> {{ $embassy->location ?? '-' }}
+                        <strong>Longitude:</strong> {{ $embassy->longitude }}
                     </p>
                 </div>
             </div>
 
-            @if(!empty($embassy->note))
             <div class="card">
-                <div class="card-header fw-bold">Note</div>
-                <div class="card-body">
-                    <p class="text-justify">{{ $embassy->note }}</p>
+                <div class="card-header fw-bold"><img src="{{ asset('images/contact-icon.png') }}" style="width: 24px; height: 24px;"> Contact Details</div>
+                <div class="card-body overflow-auto">
+                    <p>
+                        <strong>Telephone:</strong> <?php echo $embassy->telephone; ?>
+                    </p>
+                    <p>
+                        <strong>Fax:</strong> <?php echo $embassy->fax; ?>
+                    </p>
+                    <p>
+                        <strong>Email:</strong> <?php echo $embassy->email; ?>
+                    </p>
+                    <p>
+                        <strong>Website:</strong> <?php echo $embassy->website; ?>
+                    </p>
                 </div>
             </div>
-            @endif
+
+            <div class="card">
+                <div class="card-header fw-bold"><img src="{{ asset('images/icon-nearest-accomodation.png') }}" style="width: 24px; height: 18px;"> Accommodation Search</div>
+                <div class="card-body overflow-auto">
+                    <?php echo $embassy->nearest_accommodation; ?>
+                </div>
+            </div>
 
         </div>
         <div class="col-md-8">
